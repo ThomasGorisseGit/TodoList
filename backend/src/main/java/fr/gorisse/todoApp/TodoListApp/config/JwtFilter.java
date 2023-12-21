@@ -17,16 +17,6 @@ import java.util.Collection;
 
 public class JwtFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final JwtService jwtService;
 
-    public JwtFilter(JwtService jwtService) {
-        this.jwtService = jwtService;
-    }
-
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        this.jwtService.checkJwt(request);
-        return super.attemptAuthentication(request, response);
-    }
 
 }
