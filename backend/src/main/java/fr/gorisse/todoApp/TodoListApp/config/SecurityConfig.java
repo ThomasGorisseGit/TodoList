@@ -3,6 +3,7 @@ package fr.gorisse.todoApp.TodoListApp.config;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import fr.gorisse.todoApp.TodoListApp.services.JwtService;
+import org.hibernate.StatelessSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,52 +34,29 @@ import static org.springframework.security.config.Customizer.*;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final JwtFilter jwtFilter;
 
-    @Value("${SECRET}")
-    private String SECRET;
-    public SecurityConfig() {
+    public SecurityConfig(JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
     }
 
-    @Bean
-    public UserDetailsService userDetailsServices(){
-        return new InMemoryUserDetailsManager(
-                User.withUsername("connect")
-                        .password("{noop}password")
-                        .authorities("READ","ROLE_USER")
-                        .roles("USER")
-                        .build());
-    }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers("/").permitAll();
-                    authorize.requestMatchers("/auth/**").permitAll();
                     authorize.requestMatchers("/login").permitAll();
                     authorize.anyRequest().authenticated();
                 })
-                .oauth2ResourceServer(
-                       OAuth2ResourceServerConfigurer -> OAuth2ResourceServerConfigurer.jwt(withDefaults())
-                )
-                .oauth2Login(
-                        withDefaults()
-                )
-                .httpBasic(
-                        withDefaults()
-                )
                 .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(
+                        this.jwtFilter,
+                        UsernamePasswordAuthenticationFilter.class
+                )
                 .build();
     }
 
-    @Bean
-    public JwtEncoder jwtEncoder() {
-        return new NimbusJwtEncoder(new ImmutableSecret<>(this.SECRET.getBytes()));
-    }
-    @Bean
-    public JwtDecoder jwtDecoder() {
-        byte[] bytes = this.SECRET.getBytes();
-        SecretKeySpec originalKey = new SecretKeySpec(bytes, 0, bytes.length, "RSA");
-        return NimbusJwtDecoder.withSecretKey(originalKey).build();
-    }
+
 }
