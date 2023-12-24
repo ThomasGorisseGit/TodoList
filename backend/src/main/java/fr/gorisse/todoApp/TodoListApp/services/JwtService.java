@@ -22,6 +22,13 @@ public class JwtService {
     public JwtService() {
     }
 
+    public String getUsername(String token){
+        return null;
+    }
+
+    public boolean isTokenExpired(String token){
+        return true;
+    }
 
 
 
