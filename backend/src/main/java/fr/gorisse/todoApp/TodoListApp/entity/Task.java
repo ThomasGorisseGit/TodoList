@@ -14,6 +14,10 @@ import java.util.Set;
 @Entity
 public class Task {
 
+
+    // TODO : Convert to a Pattern Builder class
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTask;
@@ -21,9 +25,7 @@ public class Task {
     private String title;
     private String description;
 
-    @OneToOne
-    private TodoList ListtodoList;
+    @ManyToOne
+    private TodoList referenceTodoList;
 
-    @OneToMany
-    private Set<User> followers;
 }

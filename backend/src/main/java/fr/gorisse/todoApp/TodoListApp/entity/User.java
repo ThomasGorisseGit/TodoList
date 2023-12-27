@@ -3,10 +3,8 @@ package fr.gorisse.todoApp.TodoListApp.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.userdetails.UserDetails;
-
+import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -14,33 +12,31 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 public class User{
-    private String nom;
-    private String prenom;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUser;
+
+
+    private String lastName;
+    private String firstName;
     private String username;
+
+    // Todo : convert as value object
     private String password;
     private String email;
+
+
+    @CreatedDate
     private LocalDate dateCreation;
 
     @ManyToMany
     private Set<TodoList>  listTodoList;
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUser;
-
-    public User(String nom, String prenom, String username, String password, String email) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dateCreation = LocalDate.now();
-    }
-
+/*
     public void follow (User user, TodoList todoList){
         todoList.addFollowers(user);
     }
@@ -48,15 +44,10 @@ public class User{
     public TodoList createTodoList (String title, String description) {
         return new TodoList(title, description, this);
     }
-    public void deleateTodoList (TodoList todoList){
+    public void deleteTodoList (TodoList todoList){
         this.listTodoList.remove(todoList);
     }
 
-    public void setId(Integer id) {
-        this.idUser = id;
-    }
+ */
 
-    public Integer getId() {
-        return this.idUser;
-    }
 }
