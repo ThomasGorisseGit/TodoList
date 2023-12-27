@@ -1,21 +1,31 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
 
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.security.core.userdetails.UserDetails;
 
-@Data
-@ToString
+@Data // Getters and Setters
+@ToString // Méthode qui renvoie tous les attributs de la classe sous forme de String
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity // User est une table
+public class User {
 
-public class User{
-    private String nom;
-    private String prenom;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    public User(String nom) {
-        this.nom = nom;
-    }
+    private String lastName;
+    private String firstName;
+
+    // TODO : Modifier en Value Object
+    private String email;
+    private String password;
+
+
+
 
 }
