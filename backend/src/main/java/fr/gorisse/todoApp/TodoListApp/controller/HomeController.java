@@ -10,14 +10,16 @@ import java.util.List;
 @RestController
 public class HomeController {
 
-
+    /*
     @GetMapping("/")
     public User home() {
-        return new User("Machin");
+        return new User("Machin", "Truc", "machintruc");
     }
 
     @GetMapping("/secured")
     public String secured() {
         return "Hello World Secured";
     }
+
+   */
 }
