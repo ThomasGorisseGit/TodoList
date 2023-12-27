@@ -25,10 +25,6 @@ public class User{
     private LocalDate dateCreation;
 
     @ManyToMany
-    @JoinTable(
-            name = "follower_todo_list",
-            joinColumns = @JoinColumn(name = "follower_id"),
-            inverseJoinColumns = @JoinColumn(name = "todo_list_id"))
     private Set<TodoList>  listTodoList;
 
 
