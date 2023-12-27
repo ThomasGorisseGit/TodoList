@@ -13,15 +13,18 @@ public class  AuthController {
     public AuthController(JwtService jwtService) {
         this.jwtService = jwtService;
     }
+
      @GetMapping("/isConnected")
     public String isConnected(Authentication authentication) {
          System.out.println("here");
         return "true";
     }
 
-    @PostMapping("/login")
-    public String login(Authentication authentication) {
-        return this.jwtService.generateJwt(authentication);
+
+    @GetMapping("/login")
+    public String myLogin(){
+        return "Veuillez vous connecter";
     }
+
 
 }
