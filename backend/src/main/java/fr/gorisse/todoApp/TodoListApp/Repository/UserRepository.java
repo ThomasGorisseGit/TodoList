@@ -1,4 +1,4 @@
-package fr.gorisse.todoApp.TodoListApp.Repository;
+package fr.gorisse.todoApp.TodoListApp.repository;
 
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 
