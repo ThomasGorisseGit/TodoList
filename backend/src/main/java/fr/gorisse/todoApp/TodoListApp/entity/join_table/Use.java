@@ -24,16 +24,16 @@ public class Use {
     UseId UseId ;
 
     @ManyToOne
-    @MapsId("user")
-    @JoinColumn(referencedColumnName = "id_user")
-    private User user;
+    @MapsId("followers")
+    @JoinColumn(name = "followers", referencedColumnName = "idUser")
+    private User followers;
 
     @ManyToOne
-    @MapsId("todolist")
-    @JoinColumn(referencedColumnName = "id_todo_list")
-    private TodoList todoList;
+    @MapsId("TodoList")
+    @JoinColumn(name = "idTodoList",referencedColumnName = "idTodoList")
+    private TodoList TodoList;
 
-
+    //@Column(name = "enable")
     @Convert(converter = EnableConverter.class)
     private V_Enable enable; //true or false
 }

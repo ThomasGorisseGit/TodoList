@@ -12,7 +12,7 @@ public class UseId implements Serializable {
     @Column(name = "followers_id")
     private Integer followers;
 
-    @Column(name = "list_todo_list_id")
-    private Integer listTodoList;
+    @Column(name = "todo_list_id")
+    private Integer TodoList;
 
 }
