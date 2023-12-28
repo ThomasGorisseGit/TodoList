@@ -28,8 +28,6 @@ public class TodoList {
     private String description;
 
 
-
-    // TODO Value Object
     @Convert(converter = TypeConverter.class)
     private V_Type type; //publique privé ou partagé
 
