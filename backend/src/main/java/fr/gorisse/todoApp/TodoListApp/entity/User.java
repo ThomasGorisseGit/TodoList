@@ -2,7 +2,9 @@ package fr.gorisse.todoApp.TodoListApp.entity;
 
 
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.EmailConverter;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.PhoneConverter;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -36,7 +38,8 @@ public class User{
     // Todo : convert as value object
     private String password;
 
-    private String phone;
+    @Convert(converter = PhoneConverter.class)
+    private V_Phone phone;
 
 
     @CreatedDate
