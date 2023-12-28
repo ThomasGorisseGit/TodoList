@@ -12,8 +12,8 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public User home() {
-        return new User("Machin");
+    public String home() {
+        return "Hello World";
     }
 
     @GetMapping("/secured")
