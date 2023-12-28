@@ -27,6 +27,7 @@ public class User{
     // Todo : convert as value object
     private String password;
     private String email;
+    private String phone;
 
 
     @CreatedDate
