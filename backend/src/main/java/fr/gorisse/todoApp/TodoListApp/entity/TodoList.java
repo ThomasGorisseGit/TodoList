@@ -21,10 +21,15 @@ public class TodoList {
 
     private String title;
     private String description;
-    private String Type;
+
+
+
+    // TODO Value Object
+    private String type;
+    private String taskVisibility;
 
     @ManyToOne
-    private User Author;
+    private User author;
 
     @ManyToMany(mappedBy = "listTodoList")
     private Set<User> followers;
