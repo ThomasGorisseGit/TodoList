@@ -2,6 +2,8 @@ package fr.gorisse.todoApp.TodoListApp.entity.join_table;
 
 import fr.gorisse.todoApp.TodoListApp.entity.Task;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_State;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.StateConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +33,7 @@ public class State {
     private User user;
 
 
-    //TODO Value object :
-    private String state;
+    @Convert(converter = StateConverter.class)
+    private V_State state;
 
 }
