@@ -15,9 +15,6 @@ import java.util.Set;
 public class Task {
 
 
-    // TODO : Convert to a Pattern Builder class
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTask;

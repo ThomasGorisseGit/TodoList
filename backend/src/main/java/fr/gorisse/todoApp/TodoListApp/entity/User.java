@@ -35,19 +35,4 @@ public class User{
     @ManyToMany
     private Set<TodoList>  listTodoList;
 
-
-/*
-    public void follow (User user, TodoList todoList){
-        todoList.addFollowers(user);
-    }
-
-    public TodoList createTodoList (String title, String description) {
-        return new TodoList(title, description, this);
-    }
-    public void deleteTodoList (TodoList todoList){
-        this.listTodoList.remove(todoList);
-    }
-
- */
-
 }
