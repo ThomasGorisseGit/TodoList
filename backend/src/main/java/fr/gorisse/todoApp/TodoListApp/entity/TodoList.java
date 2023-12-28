@@ -21,6 +21,7 @@ public class TodoList {
 
     private String title;
     private String description;
+    private String Type;
 
     @ManyToOne
     private User Author;
@@ -30,6 +31,8 @@ public class TodoList {
 
     @OneToMany
     private Set<Task> tasks;
+
+
 
 
 
