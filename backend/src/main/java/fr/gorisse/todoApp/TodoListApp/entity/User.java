@@ -35,8 +35,7 @@ public class User{
     @Convert(converter = EmailConverter.class)
     private V_Email email;
 
-    // Todo : convert as value object
-    private String password;
+    private String password; //Todo : Pwd encryption
 
     @Convert(converter = PhoneConverter.class)
     private V_Phone phone;
