@@ -76,12 +76,12 @@ public class HomeController {
     }
 
     @PostMapping("/api/addLinkBetweenUserAndTodoList")
-    public void addLinkBetweenUserAndTodoList(
+    public boolean addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
             ){
         User user = linkRequest.user();
         TodoList todoList = linkRequest.todoList();
-        this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
+        return this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
     }
 
 
