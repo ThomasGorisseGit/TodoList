@@ -32,10 +32,10 @@ public class UserController {
     }
 
     // api/user/find/list?idUser=1
-    @GetMapping("/find/list")
-    public List<TodoList> findListFromUser(@RequestParam int idUser){
-        return this.todoListService.findListFromUser(idUser);
-    }
+//    @GetMapping("/find/list")
+//    public List<TodoList> findListFromUser(@RequestParam int idUser){
+//        return this.todoListService.findListFromUser(idUser);
+//    }
 
 
     @PostMapping("/edit/informations")
