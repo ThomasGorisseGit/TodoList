@@ -38,29 +38,7 @@ public class TodoListService {
 
 
 
-    public Optional<UseTable> addLinkBetweenUserAndTodoList(User user, TodoList todoList) {
-        Optional<User> trueUser = userRepository.findByIdUser(user.getIdUser());
-        Optional<TodoList> trueTodoList = todoListRepository.findByIdTodoList(todoList.getIdTodoList());
-        if (trueUser.isEmpty() || trueTodoList.isEmpty()) {
-            return Optional.empty();
-        }
 
-        UseTable useTable = new UseTable();
-        System.out.println(trueUser);
-        //System.out.println(trueTodoList);
-
-        useTable.setFollowers(trueUser.get());
-        useTable.setTodoList(trueTodoList.get());
-        useTable.setIsEnable(V_Enable.createEnable("true"));
-
-        System.out.println("bug6");
-        System.out.println(useTable);
-
-        this.useTableRepository.save(useTable);
-        System.out.println("bug7");
-        return Optional.of(useTable);
-
-    }
 
     public TodoList addTodoList(TodoList todoList){
         //addLinkBetweenUserAndTodoList(todoList.getAuthor(),todoList);

@@ -36,17 +36,4 @@ public class TodoListController {
         return this.todoListService.addTodoList(todoList);
     }
 
-    @PostMapping("/addLinkBetweenUserAndTodoList")
-    public UseTable addLinkBetweenUserAndTodoList(
-            @RequestBody LinkRequest linkRequest
-    ){
-        User user = linkRequest.user();
-        TodoList todoList = linkRequest.todoList();
-        Optional <UseTable> resTable = this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
-        if (resTable != null && resTable.isPresent())
-            return resTable.get();
-        else return null;
-    }
-
-
 }
