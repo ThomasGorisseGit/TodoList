@@ -48,6 +48,7 @@ public class SecurityConfig {
                     authorize.requestMatchers("/").permitAll();
                     authorize.requestMatchers("/login").permitAll();
                     authorize.requestMatchers("/addUser").permitAll();
+                    authorize.requestMatchers("/addStringUser").permitAll();
                     authorize.anyRequest().permitAll();
                 })
                 .csrf(AbstractHttpConfigurer::disable)

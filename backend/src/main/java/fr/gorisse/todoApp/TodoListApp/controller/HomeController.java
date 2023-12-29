@@ -43,7 +43,19 @@ public class HomeController {
     public User addUser(
             @RequestBody User user
     ){
-        return user;
+        return userService.addUser(user);
+    }
+
+    @PostMapping("/addStringUser")
+    public User addStringUser(
+            @RequestParam String lastName,
+            @RequestParam String firstName,
+            @RequestParam String username,
+            @RequestParam V_Email email,
+            @RequestParam String password,
+            @RequestParam V_Phone phone
+    ){
+        return this.userService.addStringUser(lastName, firstName, username, email, password, phone);
     }
 
     /*
