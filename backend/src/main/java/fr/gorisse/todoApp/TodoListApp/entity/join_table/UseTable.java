@@ -41,4 +41,16 @@ public class UseTable {
     //@Column(name = "enable")
     @Convert(converter = EnableConverter.class)
     private V_Enable isEnable; //true or false
+
+    public void createUseId(Integer idUser, Integer idTodoList){
+        this.useId = new UseId();
+        this.useId.setFollowers(idUser);
+        this.useId.setTodoList(idTodoList);
+    }
+
+    public void setUseId(Integer idUser, Integer idTodoList) {
+        this.useId.setFollowers(idUser);
+        this.useId.setTodoList(idTodoList);
+        System.out.println("useId set");
+    }
 }

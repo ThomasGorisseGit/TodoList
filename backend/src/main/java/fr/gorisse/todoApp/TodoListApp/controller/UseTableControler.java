@@ -3,13 +3,13 @@ package fr.gorisse.todoApp.TodoListApp.controller;
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.join_table.UseTable;
+import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
 import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UseTableService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/useTable")
@@ -39,5 +39,32 @@ public class UseTableControler {
     ){
         User user = this.userService.findUserById(idUser);
         return this.useTableService.findUseTableByFollower(user);
+    }
+
+    @GetMapping("is/link/userTodolist")
+    public boolean isLinkBetweenUserAndTodoList(
+            @RequestParam int idUser,
+            @RequestParam int idTodoList
+    ){
+        User user = this.userService.findUserById(idUser);
+        TodoList todoList = this.todoListService.findTodoListById(idTodoList);
+        return this.useTableService.isLinkBetweenUserAndTodoList(user, todoList);
+    }
+
+    @PostMapping("/add/linkUserTodoList")
+    public UseTable addLinkBetweenUserAndTodoList(
+            @RequestBody LinkRequest linkRequest
+    ){
+        User user = linkRequest.user();
+        TodoList todoList = linkRequest.todoList();
+
+        Optional<UseTable> resTable = this.useTableService.addLinkUserTodoList(user, todoList);
+
+        if (resTable != null && resTable.isPresent())
+        {
+            return resTable.get();
+        }
+
+        else return null;
     }
 }
