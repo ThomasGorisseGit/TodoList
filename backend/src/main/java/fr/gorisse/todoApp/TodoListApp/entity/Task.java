@@ -1,5 +1,6 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,5 +26,10 @@ public class Task {
 
     @ManyToOne
     private TodoList referenceTodoList;
+
+    @JsonValue
+    public String getTaskTitle() {
+        return title;
+    }
 
 }
