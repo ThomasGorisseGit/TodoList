@@ -9,6 +9,7 @@ import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -63,5 +64,18 @@ public class UserService {
 
         return this.userRepository.save(user);
     }
+
+    public User modifyUsername(String username, Integer idUser) {
+        Optional<User> optionalUser = this.userRepository.findById(idUser);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setUsername(username);
+            return this.userRepository.save(user);
+        } else {
+            // Gérer le cas où l'utilisateur n'est pas trouvé
+            throw new IllegalArgumentException("Utilisateur non trouvé pour l'ID : " + idUser);
+        }
+    }
+
 
 }
