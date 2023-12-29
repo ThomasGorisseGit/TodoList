@@ -18,4 +18,8 @@ public class TodoListService {
     public List<TodoList> getTodoListEnableByIdUser(Integer id) {
         return todoListRepository.findTodoListsEnableByIdUser(id);
     }
+
+    public TodoList addTodoList(TodoList todoList){
+        return this.todoListRepository.save(todoList);
+    }
 }
