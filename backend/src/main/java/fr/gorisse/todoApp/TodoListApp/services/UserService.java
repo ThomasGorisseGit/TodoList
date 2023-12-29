@@ -53,6 +53,7 @@ public class UserService implements IUserService, UserDetailsService {
         return this.userRepository.findUsersByTodoListId(idList);
     }
 
+    //TODO : bug ici
     public User addUser(User user){
         // SI l'utilisateur modifie son adresse email ou alors est nouveau :
         // On vérifie que l'adresse email n'est pas déjà utilisée
