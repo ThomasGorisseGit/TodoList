@@ -16,11 +16,9 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findByEmail(V_Email email);
     User findByUsername(String username);
-    /*@Query("SELECT u " +
-            "FROM User u " +
-            "JOIN U= td ON u.idUser = td.followers_id_user " +
-            "WHERE td.list_todo_list_id_todo_list = :todoList ")
-    List<User> findByTodoList(@Param("todoList") TodoList todoList);*/
+
+    @Query("SELECT u FROM User u JOIN UseTable ut ON u.idUser = ut.useId.followers WHERE ut.useId.todoList = :idTodoList")
+    List<User> findUsersByTodoListId(@Param("idTodoList") Integer idTodoList);
 }
 
 
