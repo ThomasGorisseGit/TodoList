@@ -1,12 +1,9 @@
 package fr.gorisse.todoApp.TodoListApp.entity.join_table;
 
-import fr.gorisse.todoApp.TodoListApp.entity.Task;
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Enable;
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_State;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.EnableConverter;
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.StateConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,21 +16,21 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table
-public class Use {
+public class UseTable {
     @EmbeddedId
-    UseId UseId ;
+    UseId useId ;
 
     @ManyToOne
     @MapsId("followers")
-    @JoinColumn(name = "followers", referencedColumnName = "idUser")
+    @JoinColumn(name="id_user",referencedColumnName = "idUser")
     private User followers;
 
     @ManyToOne
-    @MapsId("TodoList")
-    @JoinColumn(name = "idTodoList",referencedColumnName = "idTodoList")
-    private TodoList TodoList;
+    @MapsId("todoList")
+    @JoinColumn(name="id_todolist",referencedColumnName = "idTodoList")
+    private TodoList todoList;
 
     //@Column(name = "enable")
     @Convert(converter = EnableConverter.class)
-    private V_Enable enable; //true or false
+    private V_Enable isEnable; //true or false
 }

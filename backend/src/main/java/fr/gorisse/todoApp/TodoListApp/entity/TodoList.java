@@ -1,6 +1,5 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Type;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Visibility;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.TypeConverter;
@@ -8,7 +7,6 @@ import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.VisibilityC
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -36,9 +34,6 @@ public class TodoList {
 
     @ManyToOne
     private User author;
-
-    @ManyToMany(mappedBy = "listTodoList")
-    private Set<User> followers;
 
     @OneToMany
     private Set<Task> tasks;

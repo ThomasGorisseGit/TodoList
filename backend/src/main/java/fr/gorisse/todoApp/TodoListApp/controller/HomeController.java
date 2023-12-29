@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/")
     public User home() {
-        return new User(1,"","","", V_Email.createEmail("thomas.gorisse08@gmail.com"),"", V_Phone.createPhone("0786910105"),null,null);
+        return new User(1,"","","", V_Email.createEmail("thomas.gorisse08@gmail.com"),"", V_Phone.createPhone("0786910105"),null);
     }
 
     @PostMapping("/addUser")

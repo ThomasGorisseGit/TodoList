@@ -44,7 +44,5 @@ public class User{
     @CreatedDate
     private LocalDate dateCreation;
 
-    @ManyToMany
-    private Set<TodoList>  listTodoList;
 
 }
