@@ -1,5 +1,6 @@
 package fr.gorisse.todoApp.TodoListApp.entity.value_objects;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Value;
 
 import java.util.Arrays;
@@ -21,5 +22,8 @@ public class V_Type {
         throw new RuntimeException("Type invalide");
     }
 
-
+    @JsonValue
+    public String getType() {
+        return type;
+    }
 }

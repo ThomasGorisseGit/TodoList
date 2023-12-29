@@ -1,5 +1,6 @@
 package fr.gorisse.todoApp.TodoListApp.entity.value_objects;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Value;
 
 @Value
@@ -17,6 +18,7 @@ public class V_Enable {
         throw new RuntimeException("Enable invalide");
     }
 
+    @JsonValue
     public String getEnable() {
         return enable;
     }
