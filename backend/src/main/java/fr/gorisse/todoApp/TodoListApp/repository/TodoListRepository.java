@@ -16,4 +16,10 @@ public interface TodoListRepository extends CrudRepository<TodoList, Integer> {
             "JOIN UseTable u ON tl.idTodoList = u.useId.todoList " +
             "WHERE u.useId.followers = :idUser and u.isEnable = 'true' ")
     List<TodoList> findTodoListsEnableByIdUser(Integer idUser);
+
+    @Query("SELECT u " +
+            "FROM UseTable u " +
+            "WHERE u.followers = :user and u.todoList = :todoList")
+    boolean LinkBetweenUserAndTodoList(User user, TodoList todoList);
 }
+
