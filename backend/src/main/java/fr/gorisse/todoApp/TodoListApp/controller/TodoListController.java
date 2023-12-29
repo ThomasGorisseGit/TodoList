@@ -6,10 +6,7 @@ import fr.gorisse.todoApp.TodoListApp.entity.join_table.UseTable;
 import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
 import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -24,6 +21,13 @@ public class TodoListController {
         this.todoListService = todoListService;
     }
 
+    @GetMapping("/find/idList")
+    public TodoList findTodoListById(
+            @RequestParam int idList
+    ){
+        return this.todoListService.findTodoListById(idList);
+    }
+
     @PostMapping("/addTodoList")
     public TodoList addTodoList(
             @RequestBody TodoList todoList
@@ -33,12 +37,15 @@ public class TodoListController {
     }
 
     @PostMapping("/addLinkBetweenUserAndTodoList")
-    public Optional<UseTable> addLinkBetweenUserAndTodoList(
+    public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
     ){
         User user = linkRequest.user();
         TodoList todoList = linkRequest.todoList();
-        return this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
+        Optional <UseTable> resTable = this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
+        if (resTable != null && resTable.isPresent())
+            return resTable.get();
+        else return null;
     }
 
 
