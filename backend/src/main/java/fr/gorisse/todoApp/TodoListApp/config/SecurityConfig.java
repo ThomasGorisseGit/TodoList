@@ -59,7 +59,7 @@ public class SecurityConfig   {
                     authorize.requestMatchers("/addStringUser").permitAll();
                     authorize.requestMatchers("/api/auth/isConnected").authenticated();
                     authorize.requestMatchers("/api/**").permitAll();
-                    authorize.anyRequest().authenticated();
+                    authorize.anyRequest().permitAll();
                 })
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
