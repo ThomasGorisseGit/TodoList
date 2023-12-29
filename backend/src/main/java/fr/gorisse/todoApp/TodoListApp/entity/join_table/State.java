@@ -1,5 +1,6 @@
 package fr.gorisse.todoApp.TodoListApp.entity.join_table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import fr.gorisse.todoApp.TodoListApp.entity.Task;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_State;
@@ -25,11 +26,13 @@ public class State {
     @ManyToOne
     @MapsId("task")
     @JoinColumn(referencedColumnName = "id_task")
+    @JsonBackReference
     private Task task;
 
     @ManyToOne
     @MapsId("user")
     @JoinColumn(referencedColumnName = "idUser")
+    @JsonBackReference
     private User user;
 
 

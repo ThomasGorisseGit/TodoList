@@ -1,6 +1,6 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
 public class Task {
 
 
@@ -24,7 +25,9 @@ public class Task {
     private String title;
     private String description;
 
+
     @ManyToOne
+    @JsonBackReference
     private TodoList referenceTodoList;
 
     @JsonValue

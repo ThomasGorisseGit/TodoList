@@ -1,5 +1,9 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Type;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Visibility;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.TypeConverter;
@@ -33,10 +37,15 @@ public class TodoList {
     @Convert(converter = VisibilityConverter.class)
     private V_Visibility taskVisibility; //commun ou solo
 
+    @JsonIgnore
     @ManyToOne
+    @JsonManagedReference
     private User author;
 
-    @OneToMany
+
+
+    @OneToMany(mappedBy = "referenceTodoList", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Task> tasks;
 
 

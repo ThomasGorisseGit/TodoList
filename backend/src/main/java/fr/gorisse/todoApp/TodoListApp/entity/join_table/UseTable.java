@@ -1,5 +1,8 @@
 package fr.gorisse.todoApp.TodoListApp.entity.join_table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonValue;
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Enable;
@@ -18,16 +21,18 @@ import net.minidev.json.annotate.JsonIgnore;
 @Entity
 @Table
 public class UseTable {
+
     @EmbeddedId
     UseId useId ;
 
-    @JsonIgnore
+
     @ManyToOne
     @MapsId("followers")
     @JoinColumn(name="id_user",referencedColumnName = "idUser")
+
     private User followers;
 
-    @JsonIgnore
+
     @ManyToOne
     @MapsId("todoList")
     @JoinColumn(name="id_todolist",referencedColumnName = "idTodoList")
