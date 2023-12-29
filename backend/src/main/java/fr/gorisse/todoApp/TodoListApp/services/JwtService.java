@@ -19,12 +19,15 @@ import java.util.function.Function;
 public class JwtService {
     IUserService userService; //TODO Inject user service
 
+
+
     @Value("${SECRET}")
     private String SECRET;
-    public JwtService() {
+    public JwtService(UserService userService) {
+        this.userService = userService;
     }
     public Map<String,String> generateToken(String login){
-        User user = this.userService.getUserByLogin(login);
+        User user = this.userService.findUserByUsername(login);
         return this.generateJwt(user);
     }
     private Key getKey(){
@@ -39,12 +42,12 @@ public class JwtService {
                 "lastName",user.getLastName(),
                 //TODO Set user data
                 Claims.EXPIRATION, new Date(EXPIRATION),
-                Claims.SUBJECT, user.getEmail()
+                Claims.SUBJECT, user.getUsername()
         );
         String bearer = Jwts.builder()
                 .setIssuedAt(new Date(currentTime))
                 .setExpiration(new Date(EXPIRATION))
-                .setSubject(user.getEmail())
+                .setSubject(user.getUsername())
                 .setClaims(claims)
                 .signWith(getKey(), SignatureAlgorithm.HS256)
                 .compact();
