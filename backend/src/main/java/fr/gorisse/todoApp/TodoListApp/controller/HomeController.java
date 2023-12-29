@@ -2,6 +2,7 @@ package fr.gorisse.todoApp.TodoListApp.controller;
 
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
+import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
 import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
@@ -70,8 +71,20 @@ public class HomeController {
     public TodoList addTodoList(
             @RequestBody TodoList todoList
     ){
+
         return this.todoListService.addTodoList(todoList);
     }
+
+    @PostMapping("/api/addLinkBetweenUserAndTodoList")
+    public void addLinkBetweenUserAndTodoList(
+            @RequestBody LinkRequest linkRequest
+            ){
+        User user = linkRequest.user();
+        TodoList todoList = linkRequest.todoList();
+        this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
+    }
+
+
 
     /*
     @GetMapping("/secured")
