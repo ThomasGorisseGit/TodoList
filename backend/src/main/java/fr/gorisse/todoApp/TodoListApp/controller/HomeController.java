@@ -26,7 +26,15 @@ public class HomeController {
     public User home() {
         return new User(1,"","","", V_Email.createEmail("thomas.gorisse08@gmail.com"),"", V_Phone.createPhone("1234567890"),null);
     }
-
+    //@PathVariable  =>  api/user/find/followers/1
+    //@RequestParam => api/user/find/followers?idTodolist=1
+    //todo : todolist RestController
+    @GetMapping("/find/followers")
+    public List<User> findFollowersFromList(
+            @RequestParam int idTodolist // idTodolist OU id_todolist
+    ){
+        return this.userService.findFollowersFromList(idTodolist);
+    }
 
 
     //todo : todolist RestController

@@ -10,12 +10,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    User findByEmail(V_Email email);
-    User findByUsername(String username);
+    Optional<User> findByEmail(V_Email email);
+    Optional<User> findByUsername(String username);
 
     @Query("SELECT u FROM User u JOIN UseTable ut ON u.idUser = ut.useId.followers WHERE ut.useId.todoList = :idTodoList")
     List<User> findUsersByTodoListId(@Param("idTodoList") Integer idTodoList);

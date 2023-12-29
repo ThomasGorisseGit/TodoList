@@ -20,14 +20,7 @@ public class UserController {
         this.todoListService = todoListService;
     }
 
-    //@PathVariable  =>  api/user/find/followers/1
-    //@RequestParam => api/user/find/followers?idTodolist=1
-    @GetMapping("/find/followers")
-    public List<User> findFollowersFromList(
-            @RequestParam int idTodolist // idTodolist OU id_todolist
-    ){
-        return this.userService.findFollowersFromList(idTodolist);
-    }
+
 
 
     // api/user/add
