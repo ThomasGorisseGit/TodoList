@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -34,6 +36,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+
+    public List<User> findUserFromList(int idList){
+        return this.userRepository.findUsersByTodoListId(idList);
+    }
 
 
 }
