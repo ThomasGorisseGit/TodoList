@@ -23,8 +23,8 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public User home() {
-        return new User(1,"","","", V_Email.createEmail("thomas.gorisse08@gmail.com"),"", V_Phone.createPhone("1234567890"),null);
+    public String home() {
+        return "Hello World!";
     }
     //@PathVariable  =>  api/user/find/followers/1
     //@RequestParam => api/user/find/followers?idTodolist=1
