@@ -24,7 +24,7 @@ public class State {
 
     @ManyToOne
     @MapsId("task")
-    @JoinColumn(referencedColumnName = "idTask")
+    @JoinColumn(referencedColumnName = "id_task")
     private Task task;
 
     @ManyToOne
