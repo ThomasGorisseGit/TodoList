@@ -58,6 +58,21 @@ public class HomeController {
         return this.userService.addStringUser(lastName, firstName, username, email, password, phone);
     }
 
+    @PostMapping("/UserPage/modifyUsername")
+    public User modifyUsername(
+            @RequestParam String username,
+            @RequestParam Integer idUser
+    ){
+        return this.userService.modifyUsername(username, idUser);
+    }
+
+    @PostMapping("/addTodoList")
+    public TodoList addTodoList(
+            @RequestBody TodoList todoList
+    ){
+        return this.todoListService.addTodoList(todoList);
+    }
+
     /*
     @GetMapping("/secured")
     public String secured() {
