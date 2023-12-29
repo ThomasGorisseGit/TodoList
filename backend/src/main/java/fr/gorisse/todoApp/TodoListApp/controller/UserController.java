@@ -20,6 +20,12 @@ public class UserController {
         this.todoListService = todoListService;
     }
 
+    @GetMapping("/find/idUser")
+    public User findUserById(
+            @RequestParam int idUser
+    ){
+        return this.userService.findUserById(idUser);
+    }
 
 
 
