@@ -8,7 +8,6 @@ import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,7 +36,7 @@ public class HomeController {
         return this.todoListService.getTodoListEnableByIdUser(id);
     }
     @GetMapping("/api/followersList")
-    public List<User> getUserFromListwithrequestParam(@RequestParam int id){
+    public List<User> getUserFromListWithRequestParam(@RequestParam int id){
         return this.userService.findUserFromList(id);
     }
     @PostMapping("/addUser")

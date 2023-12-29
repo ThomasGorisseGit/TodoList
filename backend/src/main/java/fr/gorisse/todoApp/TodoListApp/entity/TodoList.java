@@ -7,7 +7,8 @@ import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.VisibilityC
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Data
 @ToString
@@ -36,7 +37,7 @@ public class TodoList {
     private User author;
 
     @OneToMany
-    private Set<Task> tasks;
+    private List<Task> tasks;
 
 
 
