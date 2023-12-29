@@ -37,22 +37,4 @@ public class HomeController {
     }
 
 
-    //todo : todolist RestController
-    @PostMapping("/addTodoList")
-    public TodoList addTodoList(
-            @RequestBody TodoList todoList
-    ){
-
-        return this.todoListService.addTodoList(todoList);
-    }
-    //Todo : on verra plus tard comment on fait / où on le met.
-    @PostMapping("/api/addLinkBetweenUserAndTodoList")
-    public boolean addLinkBetweenUserAndTodoList(
-            @RequestBody LinkRequest linkRequest
-            ){
-        User user = linkRequest.user();
-        TodoList todoList = linkRequest.todoList();
-        return this.todoListService.addLinkBetweenUserAndTodoList(user, todoList);
-    }
-
 }

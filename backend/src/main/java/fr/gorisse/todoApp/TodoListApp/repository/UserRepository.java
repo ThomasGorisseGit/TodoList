@@ -18,6 +18,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     Optional<User> findByEmail(V_Email email);
     Optional<User> findByUsername(String username);
 
+    Optional<User> findByIdUser(Integer idUser);
+
     @Query("SELECT u FROM User u JOIN UseTable ut ON u.idUser = ut.useId.followers WHERE ut.useId.todoList = :idTodoList")
     List<User> findUsersByTodoListId(@Param("idTodoList") Integer idTodoList);
 }

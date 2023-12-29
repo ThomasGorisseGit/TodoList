@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TodoListRepository extends CrudRepository<TodoList, Integer> {
@@ -20,6 +22,8 @@ public interface TodoListRepository extends CrudRepository<TodoList, Integer> {
     @Query("SELECT u " +
             "FROM UseTable u " +
             "WHERE u.followers = :user and u.todoList = :todoList")
-    boolean LinkBetweenUserAndTodoList(User user, TodoList todoList);
+    Optional<User> LinkBetweenUserAndTodoList(User user, TodoList todoList);
+
+    Optional<TodoList> findByIdTodoList(Integer idTodoList);
 }
 

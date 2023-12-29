@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Data
 @AllArgsConstructor
@@ -20,11 +21,13 @@ public class UseTable {
     @EmbeddedId
     UseId useId ;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("followers")
     @JoinColumn(name="id_user",referencedColumnName = "idUser")
     private User followers;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("todoList")
     @JoinColumn(name="id_todolist",referencedColumnName = "idTodoList")
