@@ -34,7 +34,7 @@ public class HomeController {
 
     @GetMapping("/api/homePageList/{idUser}")
     public List<TodoList> getTodoListFromIdUser(@PathVariable("idUser")int id){
-        return this.todoListService.getTodoListByIdUser(id);
+        return this.todoListService.getTodoListEnableByIdUser(id);
     }
     @GetMapping("/api/followersList")
     public List<User> getUserFromListwithrequestParam(@RequestParam int id){

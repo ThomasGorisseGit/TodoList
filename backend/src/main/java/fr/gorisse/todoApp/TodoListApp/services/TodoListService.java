@@ -15,7 +15,7 @@ public class TodoListService {
     public TodoListService(TodoListRepository todoListRepository) {
         this.todoListRepository = todoListRepository;
     }
-    public List<TodoList> getTodoListByIdUser(Integer id) {
-        return todoListRepository.findTodoListsByIdUser(id);
+    public List<TodoList> getTodoListEnableByIdUser(Integer id) {
+        return todoListRepository.findTodoListsEnableByIdUser(id);
     }
 }
