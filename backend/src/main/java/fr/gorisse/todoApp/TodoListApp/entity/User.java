@@ -1,6 +1,7 @@
 package fr.gorisse.todoApp.TodoListApp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.EmailConverter;
@@ -8,6 +9,8 @@ import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.PhoneConver
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.lang.NonNullFields;
 
@@ -41,7 +44,8 @@ public class User{
     private V_Phone phone;
 
 
-    @CreatedDate
+    @CreationTimestamp
+    @JsonFormat(pattern="dd/MM/yyyy")
     private LocalDate dateCreation;
 
 
