@@ -7,6 +7,7 @@ import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
 import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UseTableService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
+import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -51,10 +52,11 @@ public class UseTableControler {
         return this.useTableService.isLinkBetweenUserAndTodoList(user, todoList);
     }
 
+    @SneakyThrows
     @PostMapping("/add/linkUserTodoList")
     public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
-    ){
+    ) throws Exception {
         User user = linkRequest.user();
         TodoList todoList = linkRequest.todoList();
 

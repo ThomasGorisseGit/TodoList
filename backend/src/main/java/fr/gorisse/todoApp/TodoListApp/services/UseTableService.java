@@ -38,15 +38,17 @@ public class UseTableService {
         return !this.useTableRepository.LinkBetweenUserAndTodoList(user, todoList).isEmpty() ;
     }
 
-    public Optional<UseTable> addLinkUserTodoList(User user, TodoList todoList) {
+    public Optional<UseTable> addLinkUserTodoList(User user, TodoList todoList) throws Exception {
         //récupération des objets
         Optional<User> trueUser = userRepository.findByIdUser(user.getIdUser());
         Optional<TodoList> trueTodoList = todoListRepository.findByIdTodoList(todoList.getIdTodoList());
 
         //vérification de l'existence des objets
         if (trueUser.isEmpty() || trueTodoList.isEmpty()) {
-            return Optional.empty();
-        }
+            throw new Exception("User or TodoList not found");
+
+            }
+
 
         //création de l'objet UseTable
         UseTable useTable = new UseTable();
