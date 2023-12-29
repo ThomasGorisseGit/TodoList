@@ -20,5 +20,16 @@ public interface UseTableRepository extends CrudRepository<UseTable, Integer> {
     @Query("SELECT u.todoList " +
             "FROM UseTable u " +
             "WHERE u.followers = :user")
-    List<TodoList> find (User user);
+    List<TodoList> findUseTableByUser (User user);
+
+    @Query("SELECT u " +
+            "FROM UseTable u " +
+            "WHERE u.followers = :user")
+    List<UseTable> findUseTableByFollower(User user);
+    @Query("SELECT u " +
+            "FROM UseTable u " +
+            "WHERE u.todoList = :todoList")
+    List<UseTable> findUseTableByTodoList (TodoList todoList);
+
+
 }
