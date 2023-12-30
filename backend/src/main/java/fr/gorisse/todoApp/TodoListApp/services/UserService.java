@@ -1,5 +1,7 @@
 package fr.gorisse.todoApp.TodoListApp.services;
 
+import fr.gorisse.todoApp.TodoListApp.controller.exception.EmailAlreadyExistException;
+import fr.gorisse.todoApp.TodoListApp.controller.exception.UsernameAlreadyExistException;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,7 @@ import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
@@ -31,23 +34,20 @@ public class UserService implements IUserService, UserDetailsService {
         return this.findUserByEmail(user.getEmail()) != null;
     }
     private boolean doUsernameAlreadyExist(User user) {
-        return this.findUserByUsername(user.getUsername()) != null;
+        return userRepository.existsByUsername(user.getUsername());
     }
 
     public User findUserByEmail(V_Email email) {
         return userRepository.findByEmail(email).orElse(null);
     }
-    public User findUserById(Integer id) {
-        return userRepository.findById(id).orElse(null);
+    public Optional<User> findUserById(Integer id) {
+        return userRepository.findById(id);
     }
-
 
     @Override
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
-
-
 
     public List<User> findFollowersFromList(int idList){
         return this.userRepository.findUsersByTodoListId(idList);
@@ -58,10 +58,10 @@ public class UserService implements IUserService, UserDetailsService {
         // SI l'utilisateur modifie son adresse email ou alors est nouveau :
         // On vérifie que l'adresse email n'est pas déjà utilisée
         if(this.doEmailAlreadyExist(user)){
-            throw new IllegalArgumentException("L'email est déjà utilisé");
+            throw new EmailAlreadyExistException(user.getEmail());
         }
         if(this.doUsernameAlreadyExist(user)){
-            throw new IllegalArgumentException("Le nom d'utilisateur est déjà utilisé");
+            throw new UsernameAlreadyExistException(user.getUsername());
         }
         user.setPassword(this.passwordEncoder().encode(user.getPassword()));
         return this.userRepository.save(user);

@@ -26,7 +26,7 @@ public class UseTableService {
         this.todoListRepository = todoListRepository;
     }
 
-        public UseTable findUseTableByTodoList(TodoList todoList) {
+    public UseTable findUseTableByTodoList(TodoList todoList) {
         return useTableRepository.findUseTableByTodoList(todoList).get(0);
     }
 
@@ -34,21 +34,19 @@ public class UseTableService {
         return useTableRepository.findUseTableByFollower(user).get(0);
     }
 
-    public boolean isLinkBetweenUserAndTodoList(User user, TodoList todoList){
+    public boolean isLinkUserAndTodoList(User user, TodoList todoList){
         return !this.useTableRepository.LinkBetweenUserAndTodoList(user, todoList).isEmpty() ;
     }
 
-    public Optional<UseTable> addLinkUserTodoList(User user, TodoList todoList) throws Exception {
+    public Optional<UseTable> addLinkUserTodoList(User user, TodoList todoList)  {
         //récupération des objets
         Optional<User> trueUser = userRepository.findByIdUser(user.getIdUser());
         Optional<TodoList> trueTodoList = todoListRepository.findByIdTodoList(todoList.getIdTodoList());
 
         //vérification de l'existence des objets
         if (trueUser.isEmpty() || trueTodoList.isEmpty()) {
-            throw new Exception("User or TodoList not found");
-
+            return Optional.empty();
             }
-
 
         //création de l'objet UseTable
         UseTable useTable = new UseTable();
@@ -56,42 +54,12 @@ public class UseTableService {
         useTable.setFollowers(trueUser.get());
         useTable.setTodoList(trueTodoList.get());
         useTable.setIsEnable(V_Enable.createEnable("true"));
-        System.out.println(useTable.getFollowers());
-        System.out.println(useTable.getClass());
-        //System.out.println(useTable.getTodoList());
-        System.out.println(useTable.getIsEnable());
-
 
         this.useTableRepository.save(useTable);
         System.out.println("null ici 5");
         return Optional.of(useTable);
 
     }
-
-
-//    public Optional<UseTable> addLinkBetweenUserAndTodoList(User user, TodoList todoList) {
-//        Optional<User> trueUser = userRepository.findByIdUser(user.getIdUser());
-//        Optional<TodoList> trueTodoList = todoListRepository.findByIdTodoList(todoList.getIdTodoList());
-//        if (trueUser.isEmpty() || trueTodoList.isEmpty()) {
-//            return Optional.empty();
-//        }
-//
-//        UseTable useTable = new UseTable();
-//        System.out.println(trueUser);
-//        //System.out.println(trueTodoList);
-//
-//        useTable.setFollowers(trueUser.get());
-//        useTable.setTodoList(trueTodoList.get());
-//        useTable.setIsEnable(V_Enable.createEnable("true"));
-//
-//        System.out.println("bug6");
-//        System.out.println(useTable);
-//
-//        this.useTableRepository.save(useTable);
-//        System.out.println("bug7");
-//        return Optional.of(useTable);
-//
-//    }
 
 
 }

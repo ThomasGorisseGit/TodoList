@@ -7,6 +7,7 @@ import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
 import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UseTableService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +39,10 @@ public class UseTableControler {
     public UseTable findUseTableByFollower(
             @RequestParam int idUser
     ){
-        User user = this.userService.findUserById(idUser);
-        return this.useTableService.findUseTableByFollower(user);
+        Optional<User> user = this.userService.findUserById(idUser);
+        return this.useTableService.findUseTableByFollower(user.orElseThrow(
+                () -> new EntityNotFoundException("Pas d'utilisateur trouvé avec cet ID")
+        ));
     }
 
     @GetMapping("is/link/userTodolist")
@@ -47,26 +50,26 @@ public class UseTableControler {
             @RequestParam int idUser,
             @RequestParam int idTodoList
     ){
-        User user = this.userService.findUserById(idUser);
+        Optional<User> user = this.userService.findUserById(idUser);
         TodoList todoList = this.todoListService.findTodoListById(idTodoList);
-        return this.useTableService.isLinkBetweenUserAndTodoList(user, todoList);
+        if (user.isEmpty() || todoList == null) {
+            throw new EntityNotFoundException("Pas d'utilisateur ou de todolist trouvé avec cet ID");
+        }
+        return this.useTableService.isLinkUserAndTodoList(user.get(), todoList);
     }
 
-    @SneakyThrows
-    @PostMapping("/add/linkUserTodoList")
+
+    @PostMapping("/add/link/UserTodoList")
     public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
-    ) throws Exception {
+    )  {
         User user = linkRequest.user();
         TodoList todoList = linkRequest.todoList();
 
         Optional<UseTable> resTable = this.useTableService.addLinkUserTodoList(user, todoList);
 
-        if (resTable != null && resTable.isPresent())
-        {
-            return resTable.get();
-        }
-
-        else return null;
+        return resTable.orElseThrow(
+                () -> new EntityNotFoundException("Impossible de créer le lien entre l'utilisateur et la liste")
+        );
     }
 }
