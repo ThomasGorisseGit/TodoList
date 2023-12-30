@@ -26,15 +26,6 @@ public class HomeController {
     public String home() {
         return "Hello World!";
     }
-    //@PathVariable  =>  api/user/find/followers/1
-    //@RequestParam => api/user/find/followers?idTodolist=1
-    //todo : todolist RestController
-    @GetMapping("/find/followers")
-    public List<User> findFollowersFromList(
-            @RequestParam int idTodolist // idTodolist OU id_todolist
-    ){
-        return this.userService.findFollowersFromList(idTodolist);
-    }
 
 
 }

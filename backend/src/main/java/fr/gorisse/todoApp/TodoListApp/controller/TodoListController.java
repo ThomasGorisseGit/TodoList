@@ -8,6 +8,7 @@ import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
 import fr.gorisse.todoApp.TodoListApp.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -34,6 +35,13 @@ public class TodoListController {
     ){
 
         return this.todoListService.addTodoList(todoList);
+    }
+
+    @GetMapping("/find/followers")
+    public List<User> findFollowersFromList(
+            @RequestParam int idTodolist
+    ){
+        return this.userService.findFollowersFromList(idTodolist);
     }
 
 }
