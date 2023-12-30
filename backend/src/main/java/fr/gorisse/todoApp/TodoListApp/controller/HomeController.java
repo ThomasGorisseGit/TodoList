@@ -1,17 +1,31 @@
 package fr.gorisse.todoApp.TodoListApp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
+import fr.gorisse.todoApp.TodoListApp.entity.User;
+import fr.gorisse.todoApp.TodoListApp.entity.record.LinkRequest;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
+import fr.gorisse.todoApp.TodoListApp.services.TodoListService;
+import fr.gorisse.todoApp.TodoListApp.services.UserService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class HomeController {
-    @GetMapping("/")
-    public String home() {
-        return "Hello World";
+
+    private final UserService userService;
+    private final TodoListService todoListService;
+
+    public HomeController(UserService userService, TodoListService todoListService){
+        this.userService = userService;
+        this.todoListService = todoListService;
     }
 
-    @GetMapping("/secured")
-    public String secured() {
-        return "Hello World Secured";
+    @GetMapping("/")
+    public String home() {
+        return "Hello World!";
     }
+
+
 }
