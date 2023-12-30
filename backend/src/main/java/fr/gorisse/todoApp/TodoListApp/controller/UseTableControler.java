@@ -39,10 +39,8 @@ public class UseTableControler {
     public UseTable findUseTableByFollower(
             @RequestParam int idUser
     ){
-        Optional<User> user = this.userService.findUserById(idUser);
-        return this.useTableService.findUseTableByFollower(user.orElseThrow(
-                () -> new EntityNotFoundException("Pas d'utilisateur trouvé avec cet ID")
-        ));
+        User user = this.userService.findUserById(idUser);
+        return this.useTableService.findUseTableByFollower(user);
     }
 
     @GetMapping("is/link/userTodolist")
@@ -50,12 +48,9 @@ public class UseTableControler {
             @RequestParam int idUser,
             @RequestParam int idTodoList
     ){
-        Optional<User> user = this.userService.findUserById(idUser);
+        User user = this.userService.findUserById(idUser);
         TodoList todoList = this.todoListService.findTodoListById(idTodoList);
-        if (user.isEmpty() || todoList == null) {
-            throw new EntityNotFoundException("Pas d'utilisateur ou de todolist trouvé avec cet ID");
-        }
-        return this.useTableService.isLinkUserAndTodoList(user.get(), todoList);
+        return this.useTableService.isLinkUserAndTodoList(user, todoList);
     }
 
 

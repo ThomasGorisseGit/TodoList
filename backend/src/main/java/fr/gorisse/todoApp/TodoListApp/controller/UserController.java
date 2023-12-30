@@ -29,9 +29,7 @@ public class UserController {
     public User findUserById(
             @RequestParam int idUser
     ){
-        return this.userService.findUserById(idUser).orElseThrow(
-                () -> new EntityNotFoundException("Pas d'utilisateur avec l'id : " + idUser)
-        );
+        return this.userService.findUserById(idUser);
     }
 
     @PostMapping("/add")

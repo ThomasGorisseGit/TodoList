@@ -1,6 +1,7 @@
 package fr.gorisse.todoApp.TodoListApp.services;
 
 import fr.gorisse.todoApp.TodoListApp.exception.EmailAlreadyExistException;
+import fr.gorisse.todoApp.TodoListApp.exception.UserIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.exception.UsernameAlreadyExistException;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
@@ -41,8 +42,14 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findByEmail(email).orElse(null);
     }
 
-    public Optional<User> findUserById(Integer id) {
-        return userRepository.findById(id);
+    public User findUserById(Integer id) {
+        Optional<User> user =  userRepository.findById(id);
+        if (user.isPresent()) {
+            return user.get();
+        }
+        else {
+            throw new UserIntrouvableException(id);
+        }
     }
 
     @Override

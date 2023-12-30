@@ -4,6 +4,7 @@ import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.join_table.UseTable;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Enable;
+import fr.gorisse.todoApp.TodoListApp.exception.TodoListIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.repository.TodoListRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UseTableRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
@@ -23,7 +24,11 @@ public class TodoListService {
 
     public TodoList findTodoListById(Integer id) {
         Optional<TodoList> todoList = todoListRepository.findById(id);
-        return todoList.orElse(null);
+        if (todoList.isPresent()) {
+            return todoList.get();
+        }
+        else
+            throw new TodoListIntrouvableException(id);
     }
 
     public TodoListService(TodoListRepository todoListRepository, UserRepository userRepository, UseTableRepository useTableRepository) {
