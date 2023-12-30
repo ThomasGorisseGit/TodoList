@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/state")
 public class StateController {
 
-    private StateService stateService;
+    private final StateService stateService;
 
 
     public StateController(StateService stateService) {
