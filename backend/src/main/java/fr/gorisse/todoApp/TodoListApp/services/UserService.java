@@ -1,7 +1,7 @@
 package fr.gorisse.todoApp.TodoListApp.services;
 
-import fr.gorisse.todoApp.TodoListApp.controller.exception.EmailAlreadyExistException;
-import fr.gorisse.todoApp.TodoListApp.controller.exception.UsernameAlreadyExistException;
+import fr.gorisse.todoApp.TodoListApp.exception.EmailAlreadyExistException;
+import fr.gorisse.todoApp.TodoListApp.exception.UsernameAlreadyExistException;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
