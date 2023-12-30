@@ -21,17 +21,18 @@ public class UserService implements IUserService, UserDetailsService {
     UserRepository userRepository;
 
 
-
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    private PasswordEncoder passwordEncoder(){
+
+    private PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     private boolean doEmailAlreadyExist(User user) {
         return this.findUserByEmail(user.getEmail()) != null;
     }
+
     private boolean doUsernameAlreadyExist(User user) {
         return userRepository.existsByUsername(user.getUsername());
     }
@@ -39,6 +40,7 @@ public class UserService implements IUserService, UserDetailsService {
     public User findUserByEmail(V_Email email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+
     public Optional<User> findUserById(Integer id) {
         return userRepository.findById(id);
     }
@@ -48,18 +50,17 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findByUsername(username).orElse(null);
     }
 
-    public List<User> findFollowersFromList(int idList){
+    public List<User> findFollowersFromList(int idList) {
         return this.userRepository.findUsersByTodoListId(idList);
     }
 
-    //TODO : bug ici
-    public User addUser(User user){
+    public User addUser(User user) {
         // SI l'utilisateur modifie son adresse email ou alors est nouveau :
         // On vérifie que l'adresse email n'est pas déjà utilisée
-        if(this.doEmailAlreadyExist(user)){
+        if (this.doEmailAlreadyExist(user)) {
             throw new EmailAlreadyExistException(user.getEmail());
         }
-        if(this.doUsernameAlreadyExist(user)){
+        if (this.doUsernameAlreadyExist(user)) {
             throw new UsernameAlreadyExistException(user.getUsername());
         }
         user.setPassword(this.passwordEncoder().encode(user.getPassword()));

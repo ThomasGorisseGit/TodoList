@@ -17,7 +17,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    IUserService userService; //TODO Inject user service
+    IUserService userService;
 
 
 
@@ -40,7 +40,6 @@ public class JwtService {
         final Map<String, Object> claims = Map.of(
                 "firstName", user.getFirstName(),
                 "lastName",user.getLastName(),
-                //TODO Set user data
                 Claims.EXPIRATION, new Date(EXPIRATION),
                 Claims.SUBJECT, user.getUsername()
         );
