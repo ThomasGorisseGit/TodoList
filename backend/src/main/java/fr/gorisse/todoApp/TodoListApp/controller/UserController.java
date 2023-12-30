@@ -34,14 +34,6 @@ public class UserController {
         );
     }
 
-    // api/user/add
-//    @PostMapping("/add")
-//    public User addUser(
-//            @RequestBody User user
-//    ){
-//        return userService.addUser(user);
-//    }
-
     @PostMapping("/add")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
