@@ -56,7 +56,6 @@ public class UseTableService {
         useTable.setIsEnable(V_Enable.createEnable("true"));
 
         this.useTableRepository.save(useTable);
-        System.out.println("null ici 5");
         return Optional.of(useTable);
 
     }

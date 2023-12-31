@@ -38,6 +38,9 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.existsByUsername(user.getUsername());
     }
 
+    public boolean existUser(Integer id) {
+        return userRepository.existsById(id);
+    }
     public User findUserByEmail(V_Email email) {
         return userRepository.findByEmail(email).orElse(null);
     }

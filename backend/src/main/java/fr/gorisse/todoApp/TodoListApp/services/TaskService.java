@@ -27,4 +27,8 @@ public class TaskService {
     public Task addTask(Task task) {
         return taskRepository.save(task);
     }
+
+    public boolean existTask(Integer id) {
+        return taskRepository.existsById(id);
+    }
 }
