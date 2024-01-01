@@ -14,12 +14,7 @@ import java.util.List;
 @RestController
 public class HomeController {
 
-    private final UserService userService;
-    private final TodoListService todoListService;
-
-    public HomeController(UserService userService, TodoListService todoListService){
-        this.userService = userService;
-        this.todoListService = todoListService;
+    public HomeController(){
     }
 
     @GetMapping("/")
