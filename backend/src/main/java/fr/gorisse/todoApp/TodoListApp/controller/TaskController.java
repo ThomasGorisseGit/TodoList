@@ -29,11 +29,11 @@ public class TaskController {
 
     @DeleteMapping("/delete")
     public void deleteTask(@RequestParam int idTask) {
-        taskService.deleteTask(idTask);
+        taskService.delete(idTask);
     }
 
     @DeleteMapping("/delete/all")
     public void deleteAllTask(@RequestParam int idList) {
-        taskService.deleteAllTask(idList);
+        taskService.deleteAll(idList);
     }
 }

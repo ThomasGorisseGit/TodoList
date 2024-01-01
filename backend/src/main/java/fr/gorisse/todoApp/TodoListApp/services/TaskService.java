@@ -3,14 +3,14 @@ package fr.gorisse.todoApp.TodoListApp.services;
 import fr.gorisse.todoApp.TodoListApp.entity.Task;
 import fr.gorisse.todoApp.TodoListApp.exception.TaskIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.repository.TaskRepository;
-import fr.gorisse.todoApp.TodoListApp.services.interfaces.ITaskDeletion;
+import fr.gorisse.todoApp.TodoListApp.services.interfaces.IDeletion;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 
-public class TaskService implements ITaskDeletion {
+public class TaskService implements IDeletion {
     TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository) {
@@ -37,14 +37,15 @@ public class TaskService implements ITaskDeletion {
 
     // TODO Implement methods :
     @Override
-    public void deleteTask(int idTask) {
+    public void delete(int idCurrentEntity) {
 
     }
-
-
     // TODO Implement methods :
     @Override
-    public void deleteAllTask(int idList) {
+    public void deleteAll(int idParentEntity) {
 
     }
+
+
+
 }
