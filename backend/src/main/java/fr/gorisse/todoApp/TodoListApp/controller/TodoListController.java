@@ -44,4 +44,18 @@ public class TodoListController {
         return this.userService.findFollowersFromList(idTodolist);
     }
 
+    @DeleteMapping("/delete")
+    public void deleteTodoList(
+            @RequestParam int idList
+    ){
+        this.todoListService.delete(idList);
+    }
+
+    @DeleteMapping("/delete/all")
+    public void deleteAllTodoList(
+            @RequestParam int idUser
+    ){
+        this.todoListService.deleteAll(idUser);
+    }
+
 }
