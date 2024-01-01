@@ -26,4 +26,14 @@ public class TaskController {
     public Task addTask(@RequestBody Task task) {
         return taskService.addTask(task);
     }
+
+    @DeleteMapping("/delete")
+    public void deleteTask(@RequestParam int idTask) {
+        taskService.deleteTask(idTask);
+    }
+
+    @DeleteMapping("/delete/all")
+    public void deleteAllTask(@RequestParam int idList) {
+        taskService.deleteAllTask(idList);
+    }
 }
