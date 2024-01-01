@@ -5,6 +5,7 @@ import fr.gorisse.todoApp.TodoListApp.exception.UserIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.exception.UsernameAlreadyExistException;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
+import fr.gorisse.todoApp.TodoListApp.services.interfaces.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
