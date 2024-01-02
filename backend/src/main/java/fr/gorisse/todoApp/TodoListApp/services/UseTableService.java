@@ -9,6 +9,7 @@ import fr.gorisse.todoApp.TodoListApp.repository.UseTableRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,8 +31,8 @@ public class UseTableService {
         return useTableRepository.findUseTableByTodoList(todoList).get(0);
     }
 
-    public UseTable findUseTableByFollower(User user) {
-        return useTableRepository.findUseTableByFollower(user).get(0);
+    public List<UseTable> findUseTableByFollower(User user) {
+        return useTableRepository.findUseTableByFollower(user);
     }
 
     public boolean isLinkUserAndTodoList(User user, TodoList todoList){

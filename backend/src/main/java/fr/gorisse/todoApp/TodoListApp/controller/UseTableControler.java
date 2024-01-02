@@ -11,6 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,7 +37,7 @@ public class UseTableControler {
     }
 
     @GetMapping("/find/idUser")
-    public UseTable findUseTableByFollower(
+    public List<UseTable> findUseTableByFollower(
             @RequestParam int idUser
     ){
         User user = this.userService.findUserById(idUser);
