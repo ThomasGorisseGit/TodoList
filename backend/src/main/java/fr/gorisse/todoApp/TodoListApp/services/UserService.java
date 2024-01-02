@@ -16,15 +16,18 @@ import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
 
     UserRepository userRepository;
+    MailService mailService;
 
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository,MailService mailService) {
         this.userRepository = userRepository;
+        this.mailService = mailService;
     }
 
     private PasswordEncoder passwordEncoder() {
@@ -75,7 +78,14 @@ public class UserService implements IUserService, UserDetailsService {
             throw new UsernameAlreadyExistException(user.getUsername());
         }
         user.setPassword(this.passwordEncoder().encode(user.getPassword()));
-        return this.userRepository.save(user);
+        user.setActived(false);
+        Random random = new Random();
+        user.setActivationCode(String.valueOf(random.nextInt(999999)));
+
+        user =  this.userRepository.save(user);
+        this.mailService.sendActivationCode(user);
+
+        return user;
     }
 
 

@@ -41,17 +41,17 @@ public class TaskService implements IDeletion {
 
 
     @Override
-    public void delete(int idCurrentEntity) {
-        Task toDelete = this.findTaskById(idCurrentEntity);
+    public void delete(int idTask) {
+        Task toDelete = this.findTaskById(idTask);
         this.taskRepository.delete(toDelete);
     }
 
 
     @Override
-    public void deleteAll(int idParentEntity) {
+    public void deleteAll(int idTodolist) {
 
         // Fetch the todolist
-        TodoList list = this.todoListService.findTodoListById(idParentEntity);
+        TodoList list = this.todoListService.findTodoListById(idTodolist);
         List <Task> toDelete = new ArrayList<>(list.getTasks());
         list.getTasks().clear();
         this.taskRepository.deleteAll(toDelete);

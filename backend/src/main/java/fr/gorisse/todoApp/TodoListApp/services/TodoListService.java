@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 
-public class TodoListService implements IDeletion {
+public class TodoListService {
 
     TodoListRepository todoListRepository;
     UserRepository userRepository;
@@ -50,7 +50,6 @@ public class TodoListService implements IDeletion {
     }
 
 
-    @Override
     public void delete(int idCurrentEntity) {
         TodoList toDelete = this.findTodoListById(idCurrentEntity);
 
@@ -59,26 +58,7 @@ public class TodoListService implements IDeletion {
         //TODO : On ne peut pas delete si il y a un lien avec un user
     }
 
-    @Override
-    public void deleteAll(int idUser) {
-
-        //TODO : On ne peut pas delete si il y a un lien avec un user
-
-        // We want to delete every todolist the user have.
-
-        // Fetch the user
-        Optional<User> optUser = this.userRepository.findByIdUser(idUser);
-        if (optUser.isEmpty())
-            throw new TodoListIntrouvableException(idUser);
-        User user = optUser.get();
-
-        // For each todolist in the useTable, we delete it
-        List<TodoList> toDelete = new ArrayList<>(this.useTableRepository.findUseTableByUser(user));
-
-        this.todoListRepository.deleteAll(toDelete);
 
 
 
-
-    }
 }

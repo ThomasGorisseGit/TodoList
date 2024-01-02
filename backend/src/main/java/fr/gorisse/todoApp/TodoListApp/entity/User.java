@@ -40,6 +40,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
+    private boolean isActived;
+    private String activationCode;
 
     @Convert(converter = EmailConverter.class)
     private V_Email email;
@@ -61,21 +63,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return this.isActived;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.isActived;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return this.isActived;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.isActived;
     }
 }
