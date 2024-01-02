@@ -51,11 +51,4 @@ public class TodoListController {
         this.todoListService.delete(idList);
     }
 
-    @DeleteMapping("/delete/all")
-    public void deleteAllTodoList(
-            @RequestParam int idUser
-    ){
-        this.todoListService.deleteAll(idUser);
-    }
-
 }

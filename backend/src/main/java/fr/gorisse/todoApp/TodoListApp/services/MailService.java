@@ -6,6 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+
 @AllArgsConstructor
 @Service
 public class MailService {
@@ -13,7 +14,7 @@ public class MailService {
 
     public void sendActivationCode(User user){
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom("no-reply@TodoList.com");
+        msg.setFrom("joussot.gabin@gmail.com");
         msg.setTo(user.getEmail().getEmail());
         msg.setSubject("Bienvenue sur TodoList");
         msg.setText("Bonjour "+user.getFirstName()+" "+user.getLastName()+",\n\n" +
