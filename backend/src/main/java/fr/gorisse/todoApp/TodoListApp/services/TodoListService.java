@@ -2,17 +2,13 @@ package fr.gorisse.todoApp.TodoListApp.services;
 
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
-import fr.gorisse.todoApp.TodoListApp.entity.join_table.UseTable;
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Enable;
 import fr.gorisse.todoApp.TodoListApp.exception.TodoListIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.repository.TodoListRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UseTableRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 import fr.gorisse.todoApp.TodoListApp.services.interfaces.IDeletion;
-import org.hamcrest.collection.ArrayAsIterableMatcher;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,11 +48,6 @@ public class TodoListService implements IDeletion {
         //addLinkBetweenUserAndTodoList(todoList.getAuthor(),todoList);
         return this.todoListRepository.save(todoList);
     }
-
-    public boolean checkLinkUserTodoList(User user, TodoList todoList){
-        return this.todoListRepository.LinkBetweenUserAndTodoList(user, todoList).isPresent();
-    }
-
 
 
     @Override
