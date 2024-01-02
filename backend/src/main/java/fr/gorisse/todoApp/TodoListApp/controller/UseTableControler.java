@@ -44,7 +44,7 @@ public class UseTableControler {
         return this.useTableService.findUseTableByFollower(user);
     }
 
-    @GetMapping("is/link/userTodolist")
+    @GetMapping("/link/is")
     public boolean isLinkBetweenUserAndTodoList(
             @RequestParam int idUser,
             @RequestParam int idTodoList
@@ -55,7 +55,7 @@ public class UseTableControler {
     }
 
 
-    @PostMapping("/add/link/UserTodoList")
+    @PostMapping("/link/add")
     public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
     )  {

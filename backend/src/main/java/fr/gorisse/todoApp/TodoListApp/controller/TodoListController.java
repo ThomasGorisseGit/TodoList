@@ -29,7 +29,7 @@ public class TodoListController {
         return this.todoListService.findTodoListById(idList);
     }
 
-    @PostMapping("/addTodoList")
+    @PostMapping("/add")
     public TodoList addTodoList(
             @RequestBody TodoList todoList
     ){
