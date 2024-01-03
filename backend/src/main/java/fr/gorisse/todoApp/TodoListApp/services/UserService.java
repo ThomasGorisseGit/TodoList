@@ -14,9 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import javax.swing.text.html.Option;
+import java.util.*;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
@@ -82,7 +81,6 @@ public class UserService implements IUserService, UserDetailsService {
         Random random = new Random();
         user.setActivationCode(String.valueOf(random.nextInt(999999)));
 
-        user =  this.userRepository.save(user);
         this.mailService.sendActivationCode(user);
 
         return user;
@@ -92,5 +90,17 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return this.findUserByUsername(username);
+    }
+
+    public boolean activate(User user, String code){
+
+        if(user.getActivationCode().equals(code)){
+            user.setActived(true);
+            this.userRepository.save(user);
+            return true;
+        }
+        return false;
+
+
     }
 }
