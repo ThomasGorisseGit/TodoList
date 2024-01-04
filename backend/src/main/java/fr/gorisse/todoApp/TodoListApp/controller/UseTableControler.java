@@ -28,6 +28,9 @@ public class UseTableControler {
         this.userService = userService;
     }
 
+    // ? Get / find
+
+    // ? Récupère une UseTable l'id de la TodoList
     @GetMapping("/find/idList")
     public UseTable findUseTableByIdList(
             @RequestParam int idList
@@ -36,6 +39,7 @@ public class UseTableControler {
         return this.useTableService.findUseTableByTodoList(todoList);
     }
 
+    // ? Récupère une UseTable l'id de l'utilisateur
     @GetMapping("/find/idUser")
     public List<UseTable> findUseTableByFollower(
             @RequestParam int idUser
@@ -43,7 +47,8 @@ public class UseTableControler {
         User user = this.userService.findUserById(idUser);
         return this.useTableService.findUseTableByFollower(user);
     }
-
+    // ? Dit si il existe un lien etre un utilisateur et une TodoList
+    // ? Si l'utilisateur suit la TodoList
     @GetMapping("/link/is")
     public boolean isLinkBetweenUserAndTodoList(
             @RequestParam int idUser,
@@ -54,7 +59,10 @@ public class UseTableControler {
         return this.useTableService.isLinkUserAndTodoList(user, todoList);
     }
 
+    // * Add
 
+    // * Ajoute un lien entre un utilisateur et une TodoList
+    // TODO : Doit ajouter des liens entre toutes les taches de la TodoList et l'utilisateur (en fontion du type de la TodoList)
     @PostMapping("/link/add")
     public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
@@ -68,4 +76,7 @@ public class UseTableControler {
                 () -> new EntityNotFoundException("Impossible de créer le lien entre l'utilisateur et la liste")
         );
     }
+
+    // ! Delete
+    //Todo  : supprimer le lien entre un utilisateur et une TodoList
 }

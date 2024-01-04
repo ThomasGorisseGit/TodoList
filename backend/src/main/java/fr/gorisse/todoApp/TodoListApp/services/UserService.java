@@ -29,7 +29,6 @@ public class UserService implements IUserService, UserDetailsService {
         this.userRepository = userRepository;
         this.mailService = mailService;
     }
-
     private PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
