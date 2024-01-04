@@ -1,6 +1,7 @@
 package fr.gorisse.todoApp.TodoListApp.services;
 
 import fr.gorisse.todoApp.TodoListApp.entity.User;
+import fr.gorisse.todoApp.TodoListApp.services.interfaces.IUserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

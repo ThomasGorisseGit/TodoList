@@ -11,6 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +28,9 @@ public class UseTableControler {
         this.userService = userService;
     }
 
+    // ? Get / find
+
+    // ? Récupère une UseTable l'id de la TodoList
     @GetMapping("/find/idList")
     public UseTable findUseTableByIdList(
             @RequestParam int idList
@@ -35,31 +39,31 @@ public class UseTableControler {
         return this.useTableService.findUseTableByTodoList(todoList);
     }
 
+    // ? Récupère une UseTable l'id de l'utilisateur
     @GetMapping("/find/idUser")
-    public UseTable findUseTableByFollower(
+    public List<UseTable> findUseTableByFollower(
             @RequestParam int idUser
     ){
-        Optional<User> user = this.userService.findUserById(idUser);
-        return this.useTableService.findUseTableByFollower(user.orElseThrow(
-                () -> new EntityNotFoundException("Pas d'utilisateur trouvé avec cet ID")
-        ));
+        User user = this.userService.findUserById(idUser);
+        return this.useTableService.findUseTableByFollower(user);
     }
-
-    @GetMapping("is/link/userTodolist")
+    // ? Dit si il existe un lien etre un utilisateur et une TodoList
+    // ? Si l'utilisateur suit la TodoList
+    @GetMapping("/link/is")
     public boolean isLinkBetweenUserAndTodoList(
             @RequestParam int idUser,
             @RequestParam int idTodoList
     ){
-        Optional<User> user = this.userService.findUserById(idUser);
+        User user = this.userService.findUserById(idUser);
         TodoList todoList = this.todoListService.findTodoListById(idTodoList);
-        if (user.isEmpty() || todoList == null) {
-            throw new EntityNotFoundException("Pas d'utilisateur ou de todolist trouvé avec cet ID");
-        }
-        return this.useTableService.isLinkUserAndTodoList(user.get(), todoList);
+        return this.useTableService.isLinkUserAndTodoList(user, todoList);
     }
 
+    // * Add
 
-    @PostMapping("/add/link/UserTodoList")
+    // * Ajoute un lien entre un utilisateur et une TodoList
+    // TODO : Doit ajouter des liens entre toutes les taches de la TodoList et l'utilisateur (en fontion du type de la TodoList)
+    @PostMapping("/link/add")
     public UseTable addLinkBetweenUserAndTodoList(
             @RequestBody LinkRequest linkRequest
     )  {
@@ -72,4 +76,7 @@ public class UseTableControler {
                 () -> new EntityNotFoundException("Impossible de créer le lien entre l'utilisateur et la liste")
         );
     }
+
+    // ! Delete
+    //Todo  : supprimer le lien entre un utilisateur et une TodoList
 }

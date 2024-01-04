@@ -24,37 +24,35 @@ public class UserController {
         this.userService = userService;
         this.todoListService = todoListService;
     }
+    // ? Get / find
 
+    // ? Récupère un utilisateur par id
     @GetMapping("/find/idUser")
     public User findUserById(
             @RequestParam int idUser
     ){
-        return this.userService.findUserById(idUser).orElseThrow(
-                () -> new EntityNotFoundException("Pas d'utilisateur avec l'id : " + idUser)
-        );
+        return this.userService.findUserById(idUser);
     }
 
-    // api/user/add
-//    @PostMapping("/add")
-//    public User addUser(
-//            @RequestBody User user
-//    ){
-//        return userService.addUser(user);
-//    }
-
-    @PostMapping("/add")
-    public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
-
-    }
-
-    // api/user/find/list?idUser=1
+    // ? Récupère la liste des TodoList d'un utilisateur (qu'il suit)
     @GetMapping("/find/list")
     public List<TodoList> findListFromUser(@RequestParam int idUser){
         return this.todoListService.findListEnableFromUser(idUser);
     }
 
 
+    // * Add
+
+    // * Ajoute un utilisateur
+    @PostMapping("/add")
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
+
+    }
+
+
+
+    // * Modifie les informations d'un utilisateur
     @PostMapping("/edit/informations")
     public User editUserInformations(
             @RequestBody User user
@@ -62,6 +60,7 @@ public class UserController {
         return this.userService.addUser(user);
     }
 
+    // ! Delete
 
 
 }

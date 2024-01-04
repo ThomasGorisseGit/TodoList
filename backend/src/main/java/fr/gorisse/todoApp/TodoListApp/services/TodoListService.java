@@ -2,14 +2,14 @@ package fr.gorisse.todoApp.TodoListApp.services;
 
 import fr.gorisse.todoApp.TodoListApp.entity.TodoList;
 import fr.gorisse.todoApp.TodoListApp.entity.User;
-import fr.gorisse.todoApp.TodoListApp.entity.join_table.UseTable;
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Enable;
+import fr.gorisse.todoApp.TodoListApp.exception.TodoListIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.repository.TodoListRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UseTableRepository;
 import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
+import fr.gorisse.todoApp.TodoListApp.services.interfaces.IDeletion;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +21,13 @@ public class TodoListService {
     UserRepository userRepository;
     UseTableRepository useTableRepository;
 
-    public TodoList findTodoListById(Integer id) {
+    public TodoList findTodoListById(Integer id)  {
         Optional<TodoList> todoList = todoListRepository.findById(id);
-        return todoList.orElse(null);
+        if (todoList.isPresent()) {
+            return todoList.get();
+        }
+        else
+            throw new TodoListIntrouvableException(id);
     }
 
     public TodoListService(TodoListRepository todoListRepository, UserRepository userRepository, UseTableRepository useTableRepository) {
@@ -45,7 +49,16 @@ public class TodoListService {
         return this.todoListRepository.save(todoList);
     }
 
-    public boolean checkLinkUserTodoList(User user, TodoList todoList){
-        return this.todoListRepository.LinkBetweenUserAndTodoList(user, todoList).isPresent();
+
+    public void delete(int idCurrentEntity) {
+        TodoList toDelete = this.findTodoListById(idCurrentEntity);
+
+        this.todoListRepository.delete(toDelete);
+
+        //TODO : On ne peut pas delete si il y a un lien avec un user
     }
+
+
+
+
 }
