@@ -1,10 +1,11 @@
 package fr.gorisse.todoApp.TodoListApp.services;
 
+import fr.gorisse.todoApp.TodoListApp.entity.User;
+import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import fr.gorisse.todoApp.TodoListApp.exception.EmailAlreadyExistException;
 import fr.gorisse.todoApp.TodoListApp.exception.UserIntrouvableException;
 import fr.gorisse.todoApp.TodoListApp.exception.UsernameAlreadyExistException;
-import fr.gorisse.todoApp.TodoListApp.entity.User;
-import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
+import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 import fr.gorisse.todoApp.TodoListApp.services.interfaces.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,10 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import fr.gorisse.todoApp.TodoListApp.repository.UserRepository;
 
-import javax.swing.text.html.Option;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
