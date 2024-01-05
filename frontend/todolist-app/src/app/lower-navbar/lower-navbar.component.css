@@ -1,0 +1,10 @@
+.content{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+
+}
+img{
+  width: 40px;
+
+}
