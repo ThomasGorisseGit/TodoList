@@ -22,6 +22,9 @@ public class TodoListController {
         this.todoListService = todoListService;
     }
 
+    // ? Get / find
+
+    // ? Récupère un TodoList depuis son id
     @GetMapping("/find/idList")
     public TodoList findTodoListById(
             @RequestParam int idList
@@ -29,6 +32,17 @@ public class TodoListController {
         return this.todoListService.findTodoListById(idList);
     }
 
+    // ? Récupère la liste des Utilisateurs qui suivent une TodoList (depuis l'id de la TodoList)
+    @GetMapping("/find/followers")
+    public List<User> findFollowersFromList(
+            @RequestParam int idTodolist
+    ){
+        return this.userService.findFollowersFromList(idTodolist);
+    }
+
+    // * Add
+
+    // * Ajoute une TodoList
     @PostMapping("/add")
     public TodoList addTodoList(
             @RequestBody TodoList todoList
@@ -37,11 +51,13 @@ public class TodoListController {
         return this.todoListService.addTodoList(todoList);
     }
 
-    @GetMapping("/find/followers")
-    public List<User> findFollowersFromList(
-            @RequestParam int idTodolist
+
+    // ! Delete
+    @DeleteMapping("/delete")
+    public void deleteTodoList(
+            @RequestParam int idList
     ){
-        return this.userService.findFollowersFromList(idTodolist);
+        this.todoListService.delete(idList);
     }
 
 }

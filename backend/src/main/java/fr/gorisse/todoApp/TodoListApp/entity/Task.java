@@ -30,9 +30,11 @@ public class Task {
     @JsonBackReference
     private TodoList referenceTodoList;
 
-    @JsonValue
-    public String getTaskTitle() {
-        return title;
+    //pas utilisé mais utile pour la JSON
+    public int getIdTodoList() {
+        return this.referenceTodoList.getIdTodoList();
     }
+
+
 
 }

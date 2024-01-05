@@ -2,6 +2,7 @@ package fr.gorisse.todoApp.TodoListApp.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Email;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.V_Phone;
 import fr.gorisse.todoApp.TodoListApp.entity.value_objects.converter.EmailConverter;
@@ -40,6 +41,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
+    private boolean isActived;
+    private String activationCode;
 
     @Convert(converter = EmailConverter.class)
     private V_Email email;
@@ -50,32 +53,36 @@ public class User implements UserDetails {
 
 
     @CreationTimestamp
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateCreation;
 
-
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return this.isActived;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.isActived;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return this.isActived;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.isActived;
     }
 }
