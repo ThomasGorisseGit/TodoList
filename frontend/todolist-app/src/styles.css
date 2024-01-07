@@ -1,26 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');/* You can add global styles to this file, and also import other style files */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  z-index:10;
+
 }
 body{
+  color: #fff;
   margin: 0;
   padding: 0;
   border: 0;
   font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(180deg, rgba(140, 0, 255, 0.682) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
+  background: var(--background-color);
   height: 100vh;
+
   width: 100vw;
+}
+:root{
+  /* Colors : */
+  --background-color:linear-gradient(180deg, rgba(140, 0, 255, 0.682) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
+  --highlight : #8D55DB;
+  --border : solid 2px var(--highlight);
 
 }
 app-root{
   height: 100%;
   width: 100%;
+  z-index:10;
 
   margin: 0;
   padding: 0;
   border: 0;
   display: block;
+  opacity: 1;
+}
+.wrapper{
+  background-position: 50%;
+  background-image: url('./assets/bgAssets/assets.jpg') ;
+  position: absolute;
+  top :0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  user-select: none;
+  pointer-events: none;
+  z-index:0;
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill::first-line{
+    -webkit-background-clip: text;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: none;
+}
+
+
+
+/*  Default styling  */
+.default_input{
+  width: 50%;
+  height: 70%;
+  background-color: transparent;
+  outline: none;
+  border: solid 2px var(--highlight);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 1.5em;
+
+}
+.default_label{
+  font-size: 2em;
+  height: 30%;
+  font-weight: lighter;
+  color: #fff;
+
+}
+.default_form-field{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ height: 10vh;
+ align-items: center;
+}
+.default_button{
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  width: 50%;
+  height: 70px;
+  font-size: 1.5em;
 }
