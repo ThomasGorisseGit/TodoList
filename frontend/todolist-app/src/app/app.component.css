@@ -5,3 +5,7 @@ app-lower-navbar{
   width: 100%;
 
 }
+router-outlet{
+  height: 100%;
+  width: 100%;
+}
