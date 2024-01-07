@@ -1,14 +1,36 @@
 <div class="mainContent">
 
 
+  <div class="upper">
+
+    <h1 class="title">
+      Tod’
+    </h1>
+    <img src="assets/LogoSansBg.png" alt="logo de tod'app">
+    <h1 class="title">App</h1>
+  </div>
   <form class="connection-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput
-             placeholder="Ex. pat@example.com">
+
+    <div class="default_form-field">
+
+      <label class="default_label" for="Nickname">Pseudonyme</label>
+      <input class="default_input" type="text" id="Nickname" formControlName="Nickname">
+
+    </div>
+    <div class="default_form-field">
+
+      <label class="default_label" for="Password">Mot de passe</label>
+      <input class="default_input" type="password" id="Password" formControlName="Password">
+
+    </div>
+
+    <button class="default_button">Se connecter</button>
 
 
-    </mat-form-field>
   </form>
+
+  <div class="create-account">
+    Créer un compte
+  </div>
 
 </div>
