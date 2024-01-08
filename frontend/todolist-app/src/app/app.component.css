@@ -3,9 +3,4 @@ app-lower-navbar{
   position:fixed;
   bottom: 0px;
   width: 100%;
-
-}
-router-outlet{
-  height: 100%;
-  width: 100%;
 }

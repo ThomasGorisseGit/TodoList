@@ -57,6 +57,7 @@ input:-webkit-autofill::first-line{
     -webkit-background-clip: text;
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: none;
+    color: #fff;
 }
 
 
@@ -71,7 +72,7 @@ input:-webkit-autofill::first-line{
   border-radius: 10px;
   padding: 5px;
   font-size: 1.5em;
-
+  color: #fff;
 }
 .default_label{
   font-size: 2em;
