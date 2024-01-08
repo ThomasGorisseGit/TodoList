@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class  AuthController {
     private final JwtService jwtService;
     private final UserService userService;
@@ -33,6 +34,7 @@ public class  AuthController {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(usernamePassword.username(), usernamePassword.password())
         );
+        System.out.println("here");
         if(authentication.isAuthenticated()){
             return jwtService.generateToken(usernamePassword.username());
         }
