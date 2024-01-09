@@ -1,0 +1,36 @@
+<div class="mainContent">
+
+
+  <div class="upper">
+
+    <h1 class="title">
+      Tod’
+    </h1>
+    <img src="assets/LogoSansBg.png" alt="logo de tod'app">
+    <h1 class="title">App</h1>
+  </div>
+  <form [formGroup]="formGroup" class="connection-form">
+
+    <div class="default_form-field">
+
+      <label class="default_label" for="Nickname">Pseudonyme</label>
+      <input class="default_input" type="text" id="Nickname" formControlName="username" >
+
+    </div>
+    <div class="default_form-field">
+
+      <label class="default_label" for="Password">Mot de passe</label>
+      <input class="default_input" type="password" id="Password" formControlName="password">
+
+    </div>
+
+    <button class="default_button" (click)="connect()">Se connecter</button>
+
+
+  </form>
+
+  <div class="create-account">
+    Créer un compte
+  </div>
+
+</div>
