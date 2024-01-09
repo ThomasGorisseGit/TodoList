@@ -19,7 +19,7 @@ body{
 }
 :root{
   /* Colors : */
-  --background-color:linear-gradient(180deg, rgba(140, 0, 255, 0.682) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
+  --background-color:linear-gradient(180deg, rgba(69, 5, 122, 0.418) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
   --highlight : #8D55DB;
   --border : solid 2px var(--highlight);
 
@@ -42,10 +42,11 @@ app-root{
   top :0;
   width: 100%;
   height: 100%;
-  opacity: 0.1;
+  opacity: 0.2;
   user-select: none;
   pointer-events: none;
   z-index:0;
+  filter: brightness(0.9);
 
 }
 
@@ -72,8 +73,13 @@ input:-webkit-autofill::first-line{
   border-radius: 10px;
   padding: 5px;
   font-size: 1.5em;
-  color: #fff;
+
 }
+
+
+
+
+
 .default_label{
   font-size: 2em;
   height: 30%;
