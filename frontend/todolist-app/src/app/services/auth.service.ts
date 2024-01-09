@@ -13,9 +13,17 @@ export class AuthService {
   public login(
     usernamePassword:UserCredentials
   ){
+
     this.http.post(apiUrl+"/auth/connect",usernamePassword).subscribe({
-      next:(val:any) => {sessionStorage.setItem("jwt",val.bearer)},
-      error:(err:HttpError)=>{}
+      next:(val:any) => {
+        localStorage.setItem("jwt",JSON.stringify(val))
+        // TODO : FeedBack ; vous êtes connecté
+      },
+      error:(err:HttpError) => {
+        // TODO : FeedBack ; une erreur est survenue :
+        // -Soit erreur d'identifiants
+        // -Soit erreur du serveur
+      }
     })
   }
 }
