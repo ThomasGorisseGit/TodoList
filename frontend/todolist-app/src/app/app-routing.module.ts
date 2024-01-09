@@ -6,7 +6,7 @@ import { SignInComponent } from './component/sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: 'login',component: LoginComponent },
-  {path: 'signIn',component : SignInComponent}
+  {path: 'sign-in',component : SignInComponent}
 ];
 
 @NgModule({
