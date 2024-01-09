@@ -53,13 +53,9 @@ public class SecurityConfig   {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/").permitAll();
-                    authorize.requestMatchers("/login").permitAll();
-                    authorize.requestMatchers("/addUser").permitAll();
-                    authorize.requestMatchers("/addStringUser").permitAll();
-                    authorize.requestMatchers("/api/auth/isConnected").authenticated();
-                    authorize.requestMatchers("/api/**").permitAll();
-                    authorize.anyRequest().permitAll();
+
+                    authorize.requestMatchers("/api/auth/**").permitAll();
+                    authorize.anyRequest().authenticated();
                 })
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
