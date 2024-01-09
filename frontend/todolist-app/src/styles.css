@@ -45,8 +45,6 @@ app-root{
   opacity: 0.2;
   user-select: none;
   pointer-events: none;
-  z-index:0;
-  filter: brightness(0.9);
 
 }
 
