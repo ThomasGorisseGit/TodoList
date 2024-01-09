@@ -10,12 +10,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpperNavbarComponent } from './component/navbar/upper-navbar/upper-navbar.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
     LowerNavbarComponent,
     LoginComponent,
-    UpperNavbarComponent
+    UpperNavbarComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
