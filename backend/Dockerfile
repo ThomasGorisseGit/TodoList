@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-alpine
-RUN ls/var
-RUN ls/tmp
-RUN ls/home
+RUN ls /var
+RUN ls /tmp
+RUN ls /home
 
 
 RUN pwd
