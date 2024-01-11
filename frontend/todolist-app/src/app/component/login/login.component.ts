@@ -1,7 +1,7 @@
 import { UserCredentials } from 'src/app/interfaces/user-credentials';
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,23 +10,33 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LoginComponent {
 
   formGroup : FormGroup = new FormGroup({
-    username : new FormControl(),
-    password : new FormControl(),
+    username : new FormControl('',Validators.required),
+    password : new FormControl('',Validators.required),
   })
 
   constructor(private authService:AuthService){
-    console.log(
-      );
+
   }
 
+  validateForm(){
+
+    Object.keys(this.formGroup.controls).forEach(controlName => {
+      const control = this.formGroup.get(controlName) as FormControl;
+      control?.markAsTouched();
+      control?.updateValueAndValidity();
+
+    });
+  }
 
   connect(){
-    var userDetails : UserCredentials = {
-      username:this.formGroup.controls["username"].value,
-      password:this.formGroup.controls["password"].value
-    };
-
-    this.authService.login(userDetails);
+    var userDetails : UserCredentials = this.formGroup.value;
+    this.validateForm();
+    if(this.formGroup.valid){
+      this.authService.login(userDetails);
+    }
   }
 
+  getFormControl(name:string) : FormControl{
+    return this.formGroup.get(name) as FormControl;
+  }
 }
