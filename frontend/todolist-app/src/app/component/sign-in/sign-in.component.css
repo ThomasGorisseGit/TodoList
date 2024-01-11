@@ -44,7 +44,10 @@
 .connect{
   font-family: 'Quicksand', sans-serif;
   font-size: 1.5em;
-  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
 }
 
 .inputs{
