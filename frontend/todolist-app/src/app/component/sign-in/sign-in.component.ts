@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,27 +12,43 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignInComponent {
 
   formGroup : FormGroup = new FormGroup({
-    username : new FormControl(),
-    password : new FormControl(),
+    username : new FormControl('',[Validators.required]),
+    password : new FormControl('',[Validators.required]),
+    firstName : new FormControl('',[Validators.required]),
+    lastName : new FormControl('',[Validators.required]),
+    phone : new FormControl('',[Validators.pattern(/^\d{10}$/), Validators.required]),
+    email : new FormControl('',[Validators.required,Validators.email]),
+
   })
 
-  constructor(private authService:AuthService){
-    console.log(
-      );
+
+  constructor(private authService:AuthService){}
+
+  validateForm(){
+
+    Object.keys(this.formGroup.controls).forEach(controlName => {
+      const control = this.formGroup.get(controlName) as FormControl; // Cast AbstractControl to FormControl
+      control?.markAsTouched();
+      control?.updateValueAndValidity();
+      if (control?.errors) {
+        // Si le contrôle a des erreurs, stocker le message d'erreur dans le map
+      }
+    });
+  }
+  getFormControl(name:string) : FormControl{
+    return this.formGroup.get(name) as FormControl;
   }
 
-
   connect(){
-    var userDetails : User = {
-      username:this.formGroup.controls["username"].value,
-      password:this.formGroup.controls["password"].value,
-      firstName:this.formGroup.controls["firstName"].value,
-      lastName:this.formGroup.controls["lastName"].value,
-      phone:this.formGroup.controls["phone"].value,
-      email:this.formGroup.controls["email"].value
-    };
 
-    this.authService.login(userDetails);
+    var user : User = this.formGroup.value;
+    this.validateForm();
+
+    //if a user attribute is null
+    if (this.formGroup.valid) {
+      this.authService.login(user);
+    }
+
   }
 
 }
