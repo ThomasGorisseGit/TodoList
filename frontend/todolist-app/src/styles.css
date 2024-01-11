@@ -21,6 +21,8 @@ body{
   /* Colors : */
   --background-color:linear-gradient(180deg, rgba(69, 5, 122, 0.418) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
   --highlight : #8D55DB;
+  --highlight_lowOpacity:#7a48e62e;
+  --redError :  rgb(213, 65, 65);
   --border : solid 2px var(--highlight);
 
 }
@@ -53,7 +55,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
 input:-webkit-autofill::first-line{
-    -webkit-background-clip: text;
+
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: none;
     color: #fff;
@@ -67,10 +69,12 @@ input:-webkit-autofill::first-line{
   height: 70%;
   background-color: transparent;
   outline: none;
-  border: solid 2px var(--highlight);
+  border: none;
   border-radius: 10px;
   padding: 5px;
   font-size: 1.5em;
+  color: #fff;
+  background-color:var( --highlight_lowOpacity) ;
 
 }
 
@@ -101,4 +105,7 @@ input:-webkit-autofill::first-line{
   width: 50%;
   height: 70px;
   font-size: 1.5em;
+}
+.error{
+  color: var(--redError);
 }
