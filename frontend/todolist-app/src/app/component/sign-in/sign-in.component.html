@@ -23,15 +23,15 @@
 
       <app-user-input label="Nom" name="lastName" [controle]="getFormControl('lastName')" [errorMessage]="'Le nom est requis.'"></app-user-input>
       <app-user-input label="Prénom" name="firstname" [controle]="getFormControl('firstName')" [errorMessage]="'Le prénom est requis.'"></app-user-input>
-      <app-user-input label="Téléphone" name="phone" [controle]="getFormControl('phone')" [errorMessage]="'Veuillez saisir un numéro de téléphone valide.'"></app-user-input>
+      <app-user-input type="tel" label="Téléphone" name="phone" [controle]="getFormControl('phone')" [errorMessage]="'Veuillez saisir un numéro de téléphone valide.'"></app-user-input>
       <app-user-input label="Email" name="email" [controle]="getFormControl('email')" [errorMessage]="'Veuillez saisir une adresse email valide.'"></app-user-input>
       <app-user-input label="Pseudonyme" name="username" [controle]="getFormControl('username')" [errorMessage]="'Le pseudonyme est requis.'"></app-user-input>
-      <app-user-input label="Mot de passe" name="password" [controle]="getFormControl('password')" [errorMessage]="'Le Mot de passe est requis.'"></app-user-input>
+      <app-user-input type="password" label="Mot de passe" name="password" [controle]="getFormControl('password')" [errorMessage]="'Le Mot de passe est requis.'"></app-user-input>
 
     </div>
 
 
-    <button (click)="connect()" class="default_button">S'inscrire</button>
+    <button (click)="register()" class="default_button">S'inscrire</button>
 
 
   </form>

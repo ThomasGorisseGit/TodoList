@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   template: `
       <div class="default_form-field">
         <label class="default_label" [for]="name">{{ label }}</label>
-        <input class="default_input" type="text" [id]="name" [formControl]="controle" />
+        <input class="default_input" type={{type}} [id]="name" [formControl]="controle" />
         <div class="error" *ngIf="controle.touched && controle.invalid ">
           {{ errorMessage }}
         </div>
@@ -19,4 +19,5 @@ export class UserInputComponent {
   @Input() name!: string;
   @Input() controle!: FormControl;
   @Input() errorMessage!: String;
+  @Input() type: String = "text";
 }

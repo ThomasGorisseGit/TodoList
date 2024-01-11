@@ -39,14 +39,14 @@ export class SignInComponent {
     return this.formGroup.get(name) as FormControl;
   }
 
-  connect(){
+  register(){
 
     var user : User = this.formGroup.value;
     this.validateForm();
 
     //if a user attribute is null
     if (this.formGroup.valid) {
-      this.authService.login(user);
+      this.authService.register(user);
     }
 
   }
