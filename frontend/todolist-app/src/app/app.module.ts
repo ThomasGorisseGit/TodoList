@@ -15,13 +15,15 @@ import { UpperNavbarComponent } from './component/navbar/upper-navbar/upper-navb
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { UserInputComponent } from './component/user-input/user-input.component';
 @NgModule({
   declarations: [
     AppComponent,
     LowerNavbarComponent,
     LoginComponent,
     UpperNavbarComponent,
-    SignInComponent
+    SignInComponent,
+    UserInputComponent
   ],
   imports: [
     BrowserModule,
