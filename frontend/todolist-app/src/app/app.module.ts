@@ -16,6 +16,7 @@ import { SignInComponent } from './component/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { UserInputComponent } from './component/user-input/user-input.component';
+import { PopUpComponent } from './component/pop-up/pop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { UserInputComponent } from './component/user-input/user-input.component'
     LoginComponent,
     UpperNavbarComponent,
     SignInComponent,
-    UserInputComponent
+    UserInputComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+
+
 
 
 @Component({
@@ -20,6 +22,8 @@ export class SignInComponent {
     email : new FormControl('',[Validators.required,Validators.email]),
 
   })
+
+  public valid : boolean = true;
 
 
   constructor(private authService:AuthService){}
@@ -46,6 +50,10 @@ export class SignInComponent {
       this.authService.register(user);
     }
 
+  }
+
+  toCloseFromChild(isValid: boolean) {
+    this.valid = isValid;
   }
 
 }
