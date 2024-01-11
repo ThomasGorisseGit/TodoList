@@ -30,9 +30,6 @@ export class SignInComponent {
       const control = this.formGroup.get(controlName) as FormControl; // Cast AbstractControl to FormControl
       control?.markAsTouched();
       control?.updateValueAndValidity();
-      if (control?.errors) {
-        // Si le contrôle a des erreurs, stocker le message d'erreur dans le map
-      }
     });
   }
   getFormControl(name:string) : FormControl{

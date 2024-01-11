@@ -19,7 +19,7 @@ body{
 }
 :root{
   /* Colors : */
-  --background-color:linear-gradient(180deg, rgba(69, 5, 122, 0.418) 0%, rgba(66, 23, 102, 0.419) 100%), #271C33;
+  --background-color:linear-gradient(180deg, rgba(69, 5, 122, 0.418) 20%, rgba(66, 23, 102, 0.419) 100%), #271C33;
   --highlight : #8D55DB;
   --highlight_lowOpacity:#7a48e62e;
   --redError :  rgb(213, 65, 65);
@@ -108,4 +108,30 @@ input:-webkit-autofill::first-line{
 }
 .error{
   color: var(--redError);
+}
+.default_parent-pop-up{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.default_pop-up{
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  width: 60%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: var(--background-color);
+  border: var(--border);
+  border-radius: 5px;
 }

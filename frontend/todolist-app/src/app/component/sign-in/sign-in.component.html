@@ -44,3 +44,14 @@
 
 
 </div>
+<div class="default_parent-pop-up">
+  <div class="default_pop-up" *ngIf="true">
+    <div class="pop-up-title">
+      Un email vous a été envoyé pour confirmer votre inscription.
+
+    </div>
+    <app-user-input type="password" label="Mot de passe" name="password" [controle]="getFormControl('password')" [errorMessage]="'Le Mot de passe est requis.'"></app-user-input>
+
+  </div>
+
+</div>
