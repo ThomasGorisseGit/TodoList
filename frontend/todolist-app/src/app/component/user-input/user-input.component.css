@@ -22,3 +22,15 @@
  align-items: flex-start;
 
 }
+::placeholder{
+  color: #ffffffc0;
+}
+img{
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+.input-image{
+  width: 100%;
+  display: flex;
+}
