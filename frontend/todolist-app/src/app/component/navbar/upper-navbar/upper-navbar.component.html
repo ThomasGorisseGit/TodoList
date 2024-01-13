@@ -1,4 +1,8 @@
-<div class="nav-one">
-  <app-user-input placeholder="Rechercher une liste" id="searchbar" rightImage="assets/icons/fermer.png"></app-user-input>
+<div *ngIf="!isList" class="nav-one">
+  <app-user-input placeholder="Rechercher une liste" id="searchbar" rightImage="assets/icons/search.png"></app-user-input>
 </div>
-<div class="nav-two"></div>
+<div *ngIf="isList" class="nav-two">
+  <app-burger-menu></app-burger-menu>
+  <h1> {{listName}} </h1>
+  <img src={{listIcon}} alt={{listIcon}}>
+</div>
