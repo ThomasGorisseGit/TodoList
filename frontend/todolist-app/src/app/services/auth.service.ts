@@ -13,11 +13,11 @@ export class AuthService {
 
   public register(
     user:User
-  ){
-    return this.http.post(apiUrl+"/auth/register",user).subscribe({
-      next:(val:any)=> console.log(val)
 
-    })
+  ):Observable<User>
+  {
+    return this.http.post(apiUrl+"/auth/register",user) as Observable<User>
+
   }
 
   public login(
@@ -36,4 +36,21 @@ export class AuthService {
       }
     })
   }
+
+public validCode(
+  code : string,
+  username : string
+){
+  return this.http.post(apiUrl+"/auth/activate?activationCode="+code+"&username="+username,username).pipe(
+    (request) => {
+      request.subscribe({
+        next:(token:any) => {
+          localStorage.setItem("jwt",JSON.stringify(token))
+          // TODO : FeedBack ; vous êtes connecté
+        },
+    })
+    return request;
+  }
+  )
+}
 }

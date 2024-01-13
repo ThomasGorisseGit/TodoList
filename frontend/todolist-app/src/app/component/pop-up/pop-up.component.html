@@ -8,7 +8,10 @@
     <div class="message" *ngIf="message!=''">
       {{message}}
     </div>
-    <app-user-input *ngIf="input!==null" label="Code de validation" name="Validation" [controle]="input!" [errorMessage]="'Aucun code rentré'"></app-user-input>
+      <app-user-input class = "user-input" [inputLength]="6" *ngIf="input!==null" placeholder="Code" name="Validation" [controle]="input!" [errorMessage]="errorMessage"></app-user-input>
+
+
+
 
 
 

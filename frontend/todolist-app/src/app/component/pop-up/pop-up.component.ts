@@ -18,11 +18,12 @@ export class PopUpComponent {
   public quit : boolean = false;
   @Input()
   public timer : number = 0;
+  @Input()
+  public errorMessage : string = '';
 
 
   @Output()
   closeEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-
 
   constructor() {  }
 

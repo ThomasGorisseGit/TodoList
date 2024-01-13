@@ -23,10 +23,16 @@ export class SignInComponent {
 
   })
 
-  public valid : boolean = true;
+  public valid : boolean = false; //mettre a false
+
+  private username : string = '';
+
+  validationCode : FormControl = new FormControl('',[Validators.required,Validators.pattern(/^\d{6}$/)]);
 
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService){
+    this.validCode();
+  }
 
   validateForm(){
 
@@ -47,13 +53,35 @@ export class SignInComponent {
 
     //if a user attribute is null
     if (this.formGroup.valid) {
-      this.authService.register(user);
-    }
+      this.authService.register(user).subscribe({
+        next:(val:User) =>
+        {
+          this.username =  val.username
+          this.valid = true;
+
+        }
+
+    })
 
   }
+}
 
   toCloseFromChild(isValid: boolean) {
     this.valid = isValid;
+  }
+
+  validCode(){
+    this.validationCode.valueChanges.subscribe((value)=>{
+      if(value.length == 6){
+        //todo ajouter une barre de chargement
+
+        this.authService.validCode(value,this.username).subscribe({
+          next : (data) => { console.log(data) }
+
+      })
+    }
+    })
+
   }
 
 }

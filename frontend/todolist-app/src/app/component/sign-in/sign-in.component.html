@@ -45,6 +45,6 @@
 
 </div>
 
-<app-pop-up title="Validation" message = "Vérifiez votre email" [quit] = "true" *ngIf="valid" (closeEmitter)="this.toCloseFromChild($event)">
+<app-pop-up title="Validation" errorMessage="Code invalide" message = "Vérifiez votre email" [input] = "this.validationCode" [quit] = "true" *ngIf="valid" (closeEmitter)="this.toCloseFromChild($event)">
 
 </app-pop-up>
