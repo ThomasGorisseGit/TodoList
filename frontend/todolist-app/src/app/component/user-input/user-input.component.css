@@ -1,0 +1,38 @@
+.default_input{
+  width: 100%;
+  height: 5vh;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+}
+
+.default_label{
+  font-size: 1.5em;
+  height: 30%;
+  font-weight: lighter;
+  color: #fff;
+
+}
+
+.default_form-field{
+ display: flex;
+ flex-direction: column;
+ height: 100%;
+ align-items: flex-start;
+
+}
+::placeholder{
+  color: #ffffffc0;
+}
+img{
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+.input-image{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

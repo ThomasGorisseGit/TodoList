@@ -1,1 +1,3 @@
-export const apiUrl:string = 'http://localhost:8080/api';
+import { environment } from "src/environment/environment";
+
+export const apiUrl:string = environment.api.url ;

@@ -1,3 +1,7 @@
+<app-upper-navbar listName="Truc" listIcon="assets/LogoSansBg.png" [isList]="true"
+*ngIf="!this.authRoutes.includes(this.currentRoute)"
+
+></app-upper-navbar>
 <router-outlet></router-outlet>
 <app-lower-navbar
 *ngIf="!this.authRoutes.includes(this.currentRoute)"

@@ -42,6 +42,7 @@ public class User implements UserDetails {
     private String password;
 
     private boolean isActived;
+    @JsonIgnore
     private String activationCode;
 
     @Convert(converter = EmailConverter.class)

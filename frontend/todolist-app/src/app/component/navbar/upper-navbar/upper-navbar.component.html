@@ -1,1 +1,8 @@
-<p>upper-navbar works!</p>
+<div *ngIf="!isList" class="nav-one">
+  <app-user-input placeholder="Rechercher une liste" id="searchbar" rightImage="assets/icons/search.png"></app-user-input>
+</div>
+<div *ngIf="isList" class="nav-two">
+  <app-burger-menu></app-burger-menu>
+  <h1> {{listName}} </h1>
+  <img src={{listIcon}} alt={{listIcon}}>
+</div>

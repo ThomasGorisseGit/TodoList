@@ -4,11 +4,21 @@ import { apiUrl } from '../interfaces/api-url';
 import { UserCredentials } from '../interfaces/user-credentials';
 import { Observable } from 'rxjs';
 import { HttpError } from 'http-errors';
+import { User } from '../interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(private http:HttpClient) { }
+
+  public register(
+    user:User
+  ){
+    return this.http.post(apiUrl+"/auth/register",user).subscribe({
+      next:(val:any)=> console.log(val)
+
+    })
+  }
 
   public login(
     usernamePassword:UserCredentials

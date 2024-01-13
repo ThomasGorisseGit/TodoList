@@ -1,0 +1,16 @@
+<div class="parent-pop-up" (click)="closePopUp()"  *ngIf="title!=''|| message!=''">
+  <div class="pop-up" (click)="inPopUp($event)">
+
+    <h3 class = "title" *ngIf="title!=''">
+      {{title}}
+    </h3>
+
+    <div class="message" *ngIf="message!=''">
+      {{message}}
+    </div>
+    <app-user-input *ngIf="input!==null" label="Code de validation" name="Validation" [controle]="input!" [errorMessage]="'Aucun code rentré'"></app-user-input>
+
+
+
+  </div>
+</div>

@@ -57,4 +57,10 @@ public class  AuthController {
         throw new ActivationExcepetion();
     }
 
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.addUser(user);
+
+    }
+
 }

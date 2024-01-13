@@ -10,19 +10,13 @@
     <h1 class="title">App</h1>
   </div>
   <form [formGroup]="formGroup" class="connection-form">
+    <!-- How we can force formgroup.get('username') return a formcontrol and not an abstract ?-->
 
-    <div class="default_form-field">
 
-      <label class="default_label" for="Nickname">Pseudonyme</label>
-      <input class="default_input" type="text" id="Nickname" formControlName="username" >
 
-    </div>
-    <div class="default_form-field">
+    <app-user-input label="Pseudonyme" name="username" [controle]="getFormControl('username')" [errorMessage]="'Le pseudonyme est requis.'"></app-user-input>
+    <app-user-input label="Mot de passe" name="password" [controle]="getFormControl('password')" [errorMessage]="'Le Mot de passe est requis.'"></app-user-input>
 
-      <label class="default_label" for="Password">Mot de passe</label>
-      <input class="default_input" type="password" id="Password" formControlName="password">
-
-    </div>
 
     <button class="default_button" (click)="connect()">Se connecter</button>
 

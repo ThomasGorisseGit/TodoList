@@ -18,59 +18,25 @@
 
 
   </div>
-  <form class="connection-form">
+  <form [formGroup]="this.formGroup" class="connection-form">
     <div class="inputs">
 
-    <div class="default_form-field">
-
-      <label class="default_label" for="LastName">Nom</label>
-      <input class="default_input" type="text" id="LastName" formControlName="LastName">
-
-    </div>
-
-    <div class="default_form-field">
-
-      <label class="default_label" for="FirstName">Prénom</label>
-      <input class="default_input" type="text" id="FirstName" formControlName="FirstName">
-
-    </div>
-
-    <div class="default_form-field">
-
-      <label class="default_label" for="Phone">Téléphone</label>
-      <input class="default_input" type="text" id="Phone" formControlName="Phone">
-
-    </div>
-
-    <div class="default_form-field">
-
-      <label class="default_label" for="Email">Email</label>
-      <input class="default_input" type="text" id="Email" formControlName="Email">
-
-    </div>
-
-    <div class="default_form-field">
-
-      <label class="default_label" for="Nickname">Pseudo</label>
-      <input class="default_input" type="text" id="Nickname" formControlName="Nickname">
+      <app-user-input label="Nom" name="lastName" [controle]="getFormControl('lastName')" [errorMessage]="'Le nom est requis.'"></app-user-input>
+      <app-user-input label="Prénom" name="firstname" [controle]="getFormControl('firstName')" [errorMessage]="'Le prénom est requis.'"></app-user-input>
+      <app-user-input type="tel" label="Téléphone" name="phone" [controle]="getFormControl('phone')" [errorMessage]="'Veuillez saisir un numéro de téléphone valide.'"></app-user-input>
+      <app-user-input label="Email" name="email" [controle]="getFormControl('email')" [errorMessage]="'Veuillez saisir une adresse email valide.'"></app-user-input>
+      <app-user-input label="Pseudonyme" name="username" [controle]="getFormControl('username')" [errorMessage]="'Le pseudonyme est requis.'"></app-user-input>
+      <app-user-input type="password" label="Mot de passe" name="password" [controle]="getFormControl('password')" [errorMessage]="'Le Mot de passe est requis.'"></app-user-input>
 
     </div>
 
 
-    <div class="default_form-field">
-
-      <label class="default_label" for="Password">Mot de passe</label>
-      <input class="default_input" type="password" id="Password" formControlName="Password">
-
-    </div>
-    </div>
-
-    <button class="default_button">S'inscrire</button>
+    <button (click)="register()" class="default_button">S'inscrire</button>
 
 
   </form>
 
-  <div class = "connect">
+  <div  class = "connect">
     Me connecter
   </div>
 
@@ -78,3 +44,7 @@
 
 
 </div>
+
+<app-pop-up title="Validation" message = "Vérifiez votre email" [quit] = "true" *ngIf="valid" (closeEmitter)="this.toCloseFromChild($event)">
+
+</app-pop-up>

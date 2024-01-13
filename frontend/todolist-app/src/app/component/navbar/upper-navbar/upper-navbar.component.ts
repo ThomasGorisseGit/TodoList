@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-upper-navbar',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class UpperNavbarComponent {
 
+  @Input() listName! : string
+  @Input() listIcon! : string
+  @Input() isList : boolean = false
 }
