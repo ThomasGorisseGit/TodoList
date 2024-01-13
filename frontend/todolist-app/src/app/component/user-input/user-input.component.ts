@@ -8,9 +8,8 @@ import { FormControl } from '@angular/forms';
       <div class="default_form-field">
         <label class="default_label" [for]="name">{{ label }}</label>
         <div class="input-image">
-        <input class="default_input" type={{type}} placeholder={{placeholder}} [id]="name" [formControl]="controle" />
-
-<img src={{rightImage}} alt={{rightImage}}>
+          <input class="default_input" type={{type}} placeholder={{placeholder}} [id]="name" [formControl]="controle" />
+          <img *ngIf="rightImage !== null" src={{rightImage}} alt={{rightImage}}>
         </div>
         <div class="error" *ngIf="controle.touched && controle.invalid ">
           {{ errorMessage }}
