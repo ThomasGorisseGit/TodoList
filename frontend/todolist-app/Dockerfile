@@ -9,6 +9,6 @@ RUN npm run build
 
 FROM nginx:stable
 COPY --from=build /app/dist/todolist-app/ /usr/share/nginx/html
-COPY ./ngnix.conf /etc/nginx/conf.d/default.conf
+# COPY ./ngnix.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
