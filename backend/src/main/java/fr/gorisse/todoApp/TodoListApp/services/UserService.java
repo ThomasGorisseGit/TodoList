@@ -93,7 +93,7 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     public boolean activate(User user, String code){
-
+        user = this.findUserByUsername(user.getUsername());
         if(user.getActivationCode().equals(code)){
             user.setActived(true);
             this.userRepository.save(user);
