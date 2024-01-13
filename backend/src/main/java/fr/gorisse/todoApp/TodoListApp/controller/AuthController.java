@@ -49,10 +49,10 @@ public class  AuthController {
     @PostMapping("/activate")
     public Map<String,String> activate(
             @RequestParam String activationCode,
-            @RequestBody User user
+            @RequestParam String username
     ){
-        if(this.userService.activate(user,activationCode)){
-            return jwtService.generateToken(user.getUsername());
+        if(this.userService.activate(username,activationCode)){
+            return jwtService.generateToken(username);
         }
         throw new ActivationExcepetion();
     }

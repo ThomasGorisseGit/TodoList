@@ -82,7 +82,7 @@ public class UserService implements IUserService, UserDetailsService {
         user.setActivationCode(String.valueOf(random.nextInt(999999)));
 
         this.mailService.sendActivationCode(user);
-
+        this.userRepository.save(user);
         return user;
     }
 
@@ -92,15 +92,13 @@ public class UserService implements IUserService, UserDetailsService {
         return this.findUserByUsername(username);
     }
 
-    public boolean activate(User user, String code){
-
+    public boolean activate(String username, String code){
+        User user = this.findUserByUsername(username);
         if(user.getActivationCode().equals(code)){
             user.setActived(true);
             this.userRepository.save(user);
             return true;
         }
         return false;
-
-
     }
 }
