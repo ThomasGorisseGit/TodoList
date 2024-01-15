@@ -9,17 +9,17 @@ export class AppComponent implements OnInit{
 
   authRoutes:string[]= [
     "/login",
-    "/sign-in"
+    "/sign-in",
+    "/"
   ]
 
   currentRoute:string;
   title = 'todolist-app';
 
-  constructor(private router: ActivatedRoute){
+  constructor(){
     this.currentRoute = window.location.pathname;
   }
   ngOnInit(): void {
-    console.log(this.router.url);
 
   }
 }
