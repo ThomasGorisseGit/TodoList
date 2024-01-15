@@ -1,8 +1,8 @@
 import { NgModule, inject } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './component/login/login.component';
-import { SignInComponent } from './component/sign-in/sign-in.component';
-import { GreetingsComponent } from './component/greetings/greetings.component';
+import { LoginComponent } from './component/pages/login/login.component';
+import { SignInComponent } from './component/pages/sign-in/sign-in.component';
+import { GreetingsComponent } from './component/pages/greetings/greetings.component';
 
 
 const routes: Routes = [

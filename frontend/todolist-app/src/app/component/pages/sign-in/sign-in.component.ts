@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -30,7 +31,7 @@ export class SignInComponent {
   validationCode : FormControl = new FormControl('',[Validators.required,Validators.pattern(/^\d{6}$/)]);
 
 
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService, private router:Router){
     this.validCode();
   }
 
@@ -82,6 +83,9 @@ export class SignInComponent {
     }
     })
 
+  }
+  goto(location:string){
+    this.router.navigateByUrl(location);
   }
 
 }

@@ -6,19 +6,19 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LowerNavbarComponent } from './component/navbar/lower-navbar/lower-navbar.component';
-import { LoginComponent } from './component/login/login.component';
+import { LowerNavbarComponent } from './component/util/navbar/lower-navbar/lower-navbar.component';
+import { LoginComponent } from './component/pages/login/login.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UpperNavbarComponent } from './component/navbar/upper-navbar/upper-navbar.component';
-import { SignInComponent } from './component/sign-in/sign-in.component';
+import { UpperNavbarComponent } from './component/util/navbar/upper-navbar/upper-navbar.component';
+import { SignInComponent } from './component/pages/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { UserInputComponent } from './component/user-input/user-input.component';
-import { PopUpComponent } from './component/pop-up/pop-up.component';
-import { BurgerMenuComponent } from './component/navbar/burger-menu/burger-menu.component';
-import { GreetingsComponent } from './component/greetings/greetings.component';
+import { UserInputComponent } from './component/util/user-input/user-input.component';
+import { PopUpComponent } from './component/util/pop-up/pop-up.component';
+import { BurgerMenuComponent } from './component/util/navbar/burger-menu/burger-menu.component';
+import { GreetingsComponent } from './component/pages/greetings/greetings.component';
 @NgModule({
   declarations: [
     AppComponent,

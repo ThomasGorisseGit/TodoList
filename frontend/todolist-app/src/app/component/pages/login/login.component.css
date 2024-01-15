@@ -20,7 +20,11 @@
   align-items: center;
   justify-content: center;
 }
-
+.redirect{
+  font-size: 1.3em;
+  margin: 0;
+  font-weight: 400;
+}
 .title{
   font-family: 'Quicksand', sans-serif;
   margin: 0;

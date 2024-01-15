@@ -1,0 +1,35 @@
+h1,h2{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  margin: 0;
+  width: 100%;
+}
+h2{
+  font-size: 1.8em;
+}
+h1{
+  font-size: 4em;
+}
+img.logo{
+  width: 70%;
+}
+.mainContent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.center{
+  align-items: center;
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.arrow{
+  width: 20%;
+}

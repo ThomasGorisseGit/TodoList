@@ -4,14 +4,18 @@
   padding: 0;
   box-sizing: border-box;
   z-index:10;
+  font-family: 'Quicksand', sans-serif !important;
 
 }
+html {
+  scroll-behavior: smooth;
+ }
 body{
   color: #fff;
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif !important;
   background: var(--background-color);
   height: 100vh;
 

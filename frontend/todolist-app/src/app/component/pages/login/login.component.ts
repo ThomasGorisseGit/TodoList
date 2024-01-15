@@ -1,7 +1,8 @@
 import { UserCredentials } from 'src/app/interfaces/user-credentials';
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password : new FormControl('',Validators.required),
   })
 
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService,private router:Router){
 
   }
 
@@ -38,5 +39,9 @@ export class LoginComponent {
 
   getFormControl(name:string) : FormControl{
     return this.formGroup.get(name) as FormControl;
+  }
+
+  goto(location:string){
+    this.router.navigateByUrl(location);
   }
 }

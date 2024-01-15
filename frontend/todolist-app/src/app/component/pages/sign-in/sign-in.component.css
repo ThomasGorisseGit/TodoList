@@ -80,12 +80,18 @@ h3{
 
 
 
-.create-account{
+.create-account,.connect{
   font-size: 1.3em;
   text-align: center;
 }
 
 
+.redirect{
+  font-size: 1.3em;
+  color: #fff;
+  margin: 0;
+  font-weight: 400;
+}
 .default_input{
   width: 100%;
   height: 5vh;
