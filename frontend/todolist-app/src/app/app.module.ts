@@ -18,6 +18,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { UserInputComponent } from './component/user-input/user-input.component';
 import { PopUpComponent } from './component/pop-up/pop-up.component';
 import { BurgerMenuComponent } from './component/navbar/burger-menu/burger-menu.component';
+import { GreetingsComponent } from './component/greetings/greetings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { BurgerMenuComponent } from './component/navbar/burger-menu/burger-menu.
     SignInComponent,
     UserInputComponent,
     PopUpComponent,
-    BurgerMenuComponent
+    BurgerMenuComponent,
+    GreetingsComponent
   ],
   imports: [
     BrowserModule,
